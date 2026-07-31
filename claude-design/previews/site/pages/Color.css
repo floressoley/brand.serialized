@@ -1,0 +1,34 @@
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.swatch-card {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.swatch-card__fill {
+  height: 72px;
+}
+
+.swatch-card__meta {
+  padding: var(--space-3);
+}
+
+.swatch-card__name {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-text-primary);
+  margin: 0 0 2px;
+}
+
+.swatch-card__hex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-muted);
+  margin: 0;
+}

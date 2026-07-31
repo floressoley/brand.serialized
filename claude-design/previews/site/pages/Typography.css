@@ -1,0 +1,63 @@
+.specimen {
+  border-bottom: 1px solid var(--color-border-default);
+  padding-bottom: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.specimen:last-child {
+  border-bottom: none;
+}
+
+.specimen__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.specimen__name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.specimen__use {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.specimen__display {
+  font-size: 56px;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.specimen__alphabet {
+  font-size: 22px;
+  color: var(--color-text-secondary);
+}
+
+.axis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin-top: var(--space-4);
+}
+
+.axis-table th {
+  text-align: left;
+  color: var(--color-muted);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-4) var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.axis-table td {
+  padding: var(--space-2) var(--space-4) var(--space-2) 0;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border-default);
+}

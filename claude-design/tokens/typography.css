@@ -1,0 +1,29 @@
+/* Generated from brand-kit/typography/typography.md — keep in sync manually until DesignSync is wired up. */
+:root {
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Satoshi', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+
+  /* Fraunces variable axes — short text only (headlines/titles), never body copy */
+  --font-display-settings: 'opsz' 38, 'wght' 360, 'SOFT' 17, 'WONK' 0.36;
+
+  /* Satoshi — Regular weight, tracked out slightly */
+  --font-body-weight: 400;
+  --font-body-letter-spacing: 0.2px;
+  --font-body-size: 16px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: var(--font-display-settings);
+}
+
+.font-body {
+  font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  letter-spacing: var(--font-body-letter-spacing);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}

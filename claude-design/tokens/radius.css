@@ -1,0 +1,7 @@
+/* Small, restrained radii — geometric over soft. Sharper corners read as more precise/technical. */
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+}

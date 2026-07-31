@@ -1,0 +1,9 @@
+/* Elevation is mostly carried by border + surface contrast, not shadow — kept subtle on purpose for a flat, precise feel. */
+:root {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.32);
+
+  /* Focus ring — always the active surface's accent color, 2px offset ring, never a shadow-based glow. */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}

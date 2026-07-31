@@ -1,0 +1,89 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn:focus-visible {
+  outline: var(--focus-ring-width) solid var(--btn-focus-color, var(--color-accent-serialized));
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Sizes */
+.btn--sm {
+  padding: var(--space-2) var(--space-3);
+  font-size: 13px;
+}
+
+.btn--lg {
+  padding: var(--space-4) var(--space-6);
+  font-size: 15px;
+}
+
+/* Variant: primary — solid, highest emphasis */
+.btn--primary {
+  background: var(--color-text-primary);
+  color: var(--color-background);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--color-text-secondary);
+}
+
+/* Variant: secondary — outlined, medium emphasis */
+.btn--secondary {
+  background: transparent;
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--color-surface);
+  border-color: var(--color-text-secondary);
+}
+
+/* Variant: ghost — no border, lowest emphasis */
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+/* Tone: audit — for SerializedAudit.io product surfaces only */
+.btn--tone-audit.btn--primary {
+  background: var(--color-accent-audit);
+  color: var(--color-background);
+}
+
+.btn--tone-audit.btn--primary:hover:not(:disabled) {
+  background: var(--color-accent-audit);
+  filter: brightness(1.1);
+}
+
+.btn--tone-audit.btn--secondary {
+  border-color: var(--color-accent-audit);
+  color: var(--color-accent-audit);
+}
+
+.btn--tone-audit {
+  --btn-focus-color: var(--color-accent-audit);
+}

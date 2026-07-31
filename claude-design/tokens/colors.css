@@ -1,0 +1,28 @@
+/* Generated from brand-kit/colors/tokens.json — keep in sync manually until DesignSync is wired up. */
+:root {
+  /* Base (grayscale) */
+  --color-background: #1A1A19;
+  --color-surface: #2C2C2A;
+  --color-border-default: #3F3E3C;
+  --color-border-strong: #4F4F4F;
+  --color-text-primary: #FAF9F6;
+  --color-text-secondary: #C2BDB9;
+  --color-muted: #989898;
+
+  /* Accent — Serialized (brand) */
+  --color-accent-serialized: #7EABF5;
+  --color-accent-serialized-bg: #0F1829;
+
+  /* Accent — Audit (SerializedAudit.io) */
+  --color-accent-audit: #51DA4C;
+  --color-accent-audit-16: rgba(81, 218, 76, 0.16);
+  --color-accent-audit-bg: #1D282C;
+
+  /* Semantic */
+  --color-warning: #FB923C;
+  --color-warning-bg: #2E2010;
+  --color-error: #F87171;
+  --color-error-bg: #2E1010;
+  --color-info: #60A5FA;
+  --color-info-bg: #101828;
+}
