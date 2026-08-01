@@ -6,7 +6,7 @@ export interface NavSection {
 export const NAV_SECTIONS: NavSection[] = [
   { path: '/', label: 'Introduction' },
   { path: '/voice', label: 'Voice & Messaging' },
-  { path: '/identity', label: 'Core Identifiers' },
+  { path: '/identity', label: 'Marks & Lockups' },
   { path: '/color', label: 'Color' },
   { path: '/typography', label: 'Typography' },
   { path: '/sub-brands', label: 'Sub Brands' },

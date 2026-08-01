@@ -1,13 +1,15 @@
 /* Generated from brand-kit/colors/tokens.json — keep in sync manually until DesignSync is wired up. */
 :root {
   /* Base (grayscale) */
-  --color-background: #1A1A19;
-  --color-surface: #2C2C2A;
+  --color-background: #0F0F0F;
+  --color-surface: #1F1F1F;
+  --color-surface-subtle: #1A1A19;
+  --color-surface-strong: #2C2C2A;
   --color-border-default: #3F3E3C;
   --color-border-strong: #4F4F4F;
-  --color-text-primary: #FAF9F6;
-  --color-text-secondary: #C2BDB9;
-  --color-muted: #989898;
+  --color-text-primary: #F2F2F0;
+  --color-text-secondary: #9C9C99;
+  --color-muted: #6B6B68;
 
   /* Accent — Serialized (brand) */
   --color-accent-serialized: #7EABF5;

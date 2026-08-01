@@ -1,6 +1,6 @@
 import auditLogoOnDark from '../../../../brand-kit/logo/audit/audit-horizontal-on-dark.svg'
 import { Badge, Button, Card, Nav, Table } from '../../../components'
-import { PageHeader } from '../PageHeader'
+import { SectionHero } from '../SectionHero'
 import './InUse.css'
 
 const auditRows = [
@@ -12,11 +12,13 @@ const auditRows = [
 export function InUse() {
   return (
     <div>
-      <PageHeader
-        eyebrow="Brand Kit · In Use"
-        title="In Use"
-        lede="The system applied to a SerializedAudit.io-style scan page — components from claude-design/components, built on the tokens documented in this kit."
-      />
+      <SectionHero eyebrow="Brand Kit · In Use" />
+
+      <div className="page-body">
+      <p className="content__lede">
+        The system applied to a SerializedAudit.io-style scan page — components from
+        claude-design/components, built on the tokens documented in this kit.
+      </p>
 
       <div className="section">
         <h2>SerializedAudit.io scan page</h2>
@@ -117,6 +119,7 @@ export function InUse() {
             Info
           </Badge>
         </div>
+      </div>
       </div>
     </div>
   )

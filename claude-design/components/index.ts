@@ -12,3 +12,6 @@ export type { TableProps, TableCellProps } from './Table/Table'
 
 export { Nav } from './Nav/Nav'
 export type { NavProps, NavLinkItem } from './Nav/Nav'
+
+export { MagnetLines } from './MagnetLines/MagnetLines'
+export type { MagnetLinesProps } from './MagnetLines/MagnetLines'

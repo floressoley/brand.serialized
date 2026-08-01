@@ -3,7 +3,7 @@ import hexDump from '../../../../brand-kit/guidelines/imagery-inspo/hex-dump-hig
 import dotMatrix from '../../../../brand-kit/guidelines/imagery-inspo/dot-matrix-grid.png'
 import asciiMountain from '../../../../brand-kit/guidelines/imagery-inspo/ascii-mountain.png'
 import asciiFrost from '../../../../brand-kit/guidelines/imagery-inspo/ascii-frost.png'
-import { PageHeader } from '../PageHeader'
+import { SectionHero } from '../SectionHero'
 import './Voice.css'
 
 const PILLARS = [
@@ -32,49 +32,53 @@ const IMAGERY = [
 export function Voice() {
   return (
     <div>
-      <PageHeader
-        eyebrow="Brand Kit · Voice & Messaging"
-        title="Voice & Messaging"
-        lede="Direct, technical, unhyped. Serialized states findings and facts plainly — credibility depends on not sounding like marketing copy, especially on SerializedAudit.io, where the product's entire value is trustworthy data."
-      />
+      <SectionHero eyebrow="Brand Kit · Voice & Messaging" />
 
-      <div className="section">
-        <h2>Pillars</h2>
-        <div className="pillar-list">
-          {PILLARS.map((p) => (
-            <div className="pillar-row" key={p.name}>
-              <div className="pillar-row__name">{p.name}</div>
-              <div className="pillar-row__body">
-                <p>{p.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="section">
-        <h2>Voice rules</h2>
-        <ul className="voice-rules">
-          <li>State findings and facts plainly — this is an audit tool, not a pitch.</li>
-          <li>Short Fraunces statements for emphasis; everything else in Satoshi, plain and clear.</li>
-          <li>Never editorialize a risk score. Report the number and the reasoning, not a verdict dressed as opinion.</li>
-        </ul>
-      </div>
-
-      <div className="section">
-        <h2>Imagery direction</h2>
-        <p style={{ marginBottom: 'var(--space-6)' }}>
-          ASCII-art and terminal-native texture, always monochrome-with-accent. Imagery is generated{' '}
-          <em>from</em> structure — characters, hex, grids — never photographic or illustrative without that
-          data-native treatment. This is what ties visuals back to Precision.
+      <div className="page-body">
+        <p className="content__lede">
+          Direct, technical, unhyped. Serialized states findings and facts plainly — credibility depends on not
+          sounding like marketing copy, especially on SerializedAudit.io, where the product's entire value is
+          trustworthy data.
         </p>
-        <div className="imagery-grid">
-          {IMAGERY.map((item) => (
-            <div className="imagery-card" key={item.caption}>
-              <img src={item.src} alt={item.caption} />
-              <div className="imagery-card__caption">{item.caption}</div>
-            </div>
-          ))}
+
+        <div className="section">
+          <h2>Pillars</h2>
+          <div className="pillar-list">
+            {PILLARS.map((p) => (
+              <div className="pillar-row" key={p.name}>
+                <div className="pillar-row__name">{p.name}</div>
+                <div className="pillar-row__body">
+                  <p>{p.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="section">
+          <h2>Voice rules</h2>
+          <ul className="voice-rules">
+            <li>State findings and facts plainly — this is an audit tool, not a pitch.</li>
+            <li>Short Fraunces statements for emphasis; everything else in Satoshi, plain and clear.</li>
+            <li>Never editorialize a risk score. Report the number and the reasoning, not a verdict dressed as opinion.</li>
+          </ul>
+        </div>
+
+        <div className="section">
+          <h2>Imagery direction</h2>
+          <p style={{ marginBottom: 'var(--space-6)' }}>
+            ASCII-art and terminal-native texture, always monochrome-with-accent. Imagery is generated{' '}
+            <em>from</em> structure — characters, hex, grids — never photographic or illustrative without that
+            data-native treatment. This is what ties visuals back to Precision.
+          </p>
+          <div className="imagery-grid">
+            {IMAGERY.map((item) => (
+              <div className="imagery-card" key={item.caption}>
+                <img src={item.src} alt={item.caption} />
+                <div className="imagery-card__caption">{item.caption}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

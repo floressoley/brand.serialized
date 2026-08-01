@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { PageHeader } from '../PageHeader'
+import { SectionHero } from '../SectionHero'
 import './Introduction.css'
 
 const PILLARS = [
@@ -19,7 +19,7 @@ const PILLARS = [
 
 const MAP = [
   { to: '/voice', title: 'Voice & Messaging', desc: 'How Serialized sounds — pillars, tone, imagery direction.' },
-  { to: '/identity', title: 'Core Identifiers', desc: 'The mark, lockups, clearspace, minimum size.' },
+  { to: '/identity', title: 'Marks & Lockups', desc: 'The mark, lockups, clearspace, minimum size.' },
   { to: '/color', title: 'Color', desc: 'Grayscale base, brand and product accent lanes, semantic states.' },
   { to: '/typography', title: 'Typography', desc: 'Fraunces, Satoshi, Roboto Mono — and when to use each.' },
   { to: '/sub-brands', title: 'Sub Brands', desc: 'Serialized.Audit — the product identity for SerializedAudit.io.' },
@@ -29,31 +29,35 @@ const MAP = [
 export function Introduction() {
   return (
     <div>
-      <PageHeader
-        eyebrow="Brand Kit · Introduction"
-        title="Serialized"
-        lede="A monochromatic system built for Trust, Precision, and Excellence. Grayscale carries the structure; color is reserved for meaning — brand identity, product identity, and state. Here's what keeps it recognizable, and where each part lives."
-      />
+      <SectionHero eyebrow="Brand Kit · Introduction" />
 
-      <div className="pillars">
-        {PILLARS.map((pillar, i) => (
-          <div className="pillar" key={pillar.title}>
-            <div className="pillar__index">0{i + 1}</div>
-            <h3 className="pillar__title">{pillar.title}</h3>
-            <p className="pillar__body">{pillar.body}</p>
-          </div>
-        ))}
-      </div>
+      <div className="page-body">
+        <p className="content__lede">
+          A monochromatic system built for Trust, Precision, and Excellence. Grayscale carries the structure;
+          color is reserved for meaning — brand identity, product identity, and state. Here's what keeps it
+          recognizable, and where each part lives.
+        </p>
 
-      <div className="section">
-        <h2>In this kit</h2>
-        <div className="map-grid">
-          {MAP.map((item) => (
-            <Link className="map-card" to={item.to} key={item.to}>
-              <p className="map-card__title">{item.title}</p>
-              <p className="map-card__desc">{item.desc}</p>
-            </Link>
+        <div className="pillars">
+          {PILLARS.map((pillar, i) => (
+            <div className="pillar" key={pillar.title}>
+              <div className="pillar__index">0{i + 1}</div>
+              <h3 className="pillar__title">{pillar.title}</h3>
+              <p className="pillar__body">{pillar.body}</p>
+            </div>
           ))}
+        </div>
+
+        <div className="section">
+          <h2>In this kit</h2>
+          <div className="map-grid">
+            {MAP.map((item) => (
+              <Link className="map-card" to={item.to} key={item.to}>
+                <p className="map-card__title">{item.title}</p>
+                <p className="map-card__desc">{item.desc}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

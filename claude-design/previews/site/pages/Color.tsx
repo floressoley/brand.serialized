@@ -1,4 +1,4 @@
-import { PageHeader } from '../PageHeader'
+import { SectionHero } from '../SectionHero'
 import './Color.css'
 
 const GROUPS = [
@@ -6,13 +6,15 @@ const GROUPS = [
     title: 'Base (grayscale)',
     body: 'Default to grayscale for structure — backgrounds, borders, text hierarchy. Color is never used decoratively.',
     swatches: [
-      ['Background', '#1A1A19'],
-      ['Surface', '#2C2C2A'],
+      ['Background', '#0F0F0F'],
+      ['Surface', '#1F1F1F'],
+      ['Surface Subtle', '#1A1A19'],
+      ['Surface Strong', '#2C2C2A'],
       ['Border Default', '#3F3E3C'],
       ['Border Strong', '#4F4F4F'],
-      ['Text Primary', '#FAF9F6'],
-      ['Text Secondary', '#C2BDB9'],
-      ['Muted', '#989898'],
+      ['Text Primary', '#F2F2F0'],
+      ['Text Secondary', '#9C9C99'],
+      ['Muted', '#6B6B68'],
     ],
   },
   {
@@ -49,11 +51,13 @@ const GROUPS = [
 export function Color() {
   return (
     <div>
-      <PageHeader
-        eyebrow="Brand Kit · Color"
-        title="Color"
-        lede="Dark-mode-first, monochromatic base with two accent lanes and a semantic set. Color is reserved for meaning: brand identity, product identity, and state — never decoration."
-      />
+      <SectionHero eyebrow="Brand Kit · Color" />
+
+      <div className="page-body">
+      <p className="content__lede">
+        Dark-mode-first, monochromatic base with two accent lanes and a semantic set. Color is reserved for
+        meaning: brand identity, product identity, and state — never decoration.
+      </p>
 
       {GROUPS.map((group) => (
         <div className="section" key={group.title}>
@@ -80,6 +84,7 @@ export function Color() {
           containers (badges, banners, chart fills) — pair them together rather than using the
           full-saturation color as a fill. No light-mode palette exists yet; this system is dark-first.
         </p>
+      </div>
       </div>
     </div>
   )

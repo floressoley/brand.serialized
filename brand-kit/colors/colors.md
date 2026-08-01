@@ -6,13 +6,15 @@ Dark-mode-first, monochromatic base with two accent lanes and a semantic set. Ai
 
 | Name | Hex | Usage |
 |---|---|---|
-| Background | `#1A1A19` | App/page background |
-| Surface | `#2C2C2A` | Cards, panels, raised surfaces |
+| Background | `#0F0F0F` | App/page background |
+| Surface | `#1F1F1F` | Cards, panels, raised surfaces |
+| Surface Subtle | `#1A1A19` | Slightly-raised panels, between Background and Surface |
+| Surface Strong | `#2C2C2A` | Elevated/hover surfaces, above Surface |
 | Border Default | `#3F3E3C` | Default dividers, input borders |
 | Border Strong | `#4F4F4F` | Emphasized borders, hover states |
-| Text Primary | `#FAF9F6` | Headlines, primary body text |
-| Text Secondary | `#C2BDB9` | Secondary copy, descriptions |
-| Muted | `#989898` | Placeholder text, disabled, captions |
+| Text Primary | `#F2F2F0` | Headlines, primary body text |
+| Text Secondary | `#9C9C99` | Secondary copy, descriptions |
+| Muted | `#6B6B68` | Placeholder text, disabled, captions |
 
 ## Accent — Serialized (brand)
 

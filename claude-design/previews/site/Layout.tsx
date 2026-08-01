@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import serializedLogo from '../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg'
+import { BackToTop } from './BackToTop'
 import { NAV_SECTIONS } from './nav-config'
 import './Layout.css'
 
@@ -34,6 +35,7 @@ export function Layout() {
           <Outlet />
         </div>
       </main>
+      <BackToTop />
     </div>
   )
 }

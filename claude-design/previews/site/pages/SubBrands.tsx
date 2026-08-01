@@ -2,30 +2,33 @@ import auditHorizontalOnDark from '../../../../brand-kit/logo/audit/audit-horizo
 import auditHorizontalOnLight from '../../../../brand-kit/logo/audit/audit-horizontal-on-light.svg'
 import auditMarkOnDark from '../../../../brand-kit/logo/audit/audit-logomark-on-dark.svg'
 import auditMarkOnLight from '../../../../brand-kit/logo/audit/audit-logomark-on-light.svg'
-import { PageHeader } from '../PageHeader'
+import { SectionHero } from '../SectionHero'
 import './Identity.css'
 
 export function SubBrands() {
   return (
     <div>
-      <PageHeader
-        eyebrow="Brand Kit · Sub Brands"
-        title="Serialized.Audit"
-        lede="The product identity for SerializedAudit.io — a B2C token scanning and auditing tool. Same mark, same type system, one signal difference: the third bar and wordmark shift to Accent Audit green, marking it as a distinct product surface within the Serialized family."
-      />
+      <SectionHero eyebrow="Brand Kit · Sub Brands" />
+
+      <div className="page-body">
+      <p className="content__lede">
+        The product identity for SerializedAudit.io — a B2C token scanning and auditing tool. Same mark, same
+        type system, one signal difference: the third bar and wordmark shift to Accent Audit green, marking
+        it as a distinct product surface within the Serialized family.
+      </p>
 
       <div className="section">
-        <h2>Horizontal lockup</h2>
+        <h2>Full Logo</h2>
         <div className="logo-pair">
           <div>
             <div className="logo-stage logo-stage--dark">
-              <img src={auditHorizontalOnDark} alt="Serialized.Audit horizontal logo, on dark" />
+              <img src={auditHorizontalOnDark} alt="Serialized.Audit full logo, on dark" />
             </div>
             <div className="logo-pair__label">On dark</div>
           </div>
           <div>
             <div className="logo-stage logo-stage--light">
-              <img src={auditHorizontalOnLight} alt="Serialized.Audit horizontal logo, on light" />
+              <img src={auditHorizontalOnLight} alt="Serialized.Audit full logo, on light" />
             </div>
             <div className="logo-pair__label">On light</div>
           </div>
@@ -68,8 +71,9 @@ export function SubBrands() {
           <li>Audit lockups are used exclusively on SerializedAudit.io product surfaces — scanning UI, reports, product marketing for Audit specifically.</li>
           <li>Never substitute the Audit lockup for the parent Serialized mark, or vice versa — each signals a distinct context to the user.</li>
           <li>Pair with Accent Audit (<code>#51DA4C</code>) throughout the surface — buttons, active states, pass indicators — not Accent Serialized blue. See <a href="/color" style={{ color: 'var(--color-accent-audit)' }}>Color</a> for the full lane.</li>
-          <li>Clearspace and minimum-size rules are identical to the parent mark — see <a href="/identity" style={{ color: 'var(--color-accent-audit)' }}>Core Identifiers</a>.</li>
+          <li>Clearspace and minimum-size rules are identical to the parent mark — see <a href="/identity" style={{ color: 'var(--color-accent-audit)' }}>Marks & Lockups</a>.</li>
         </ul>
+      </div>
       </div>
     </div>
   )

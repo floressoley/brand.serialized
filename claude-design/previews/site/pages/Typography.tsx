@@ -1,14 +1,16 @@
-import { PageHeader } from '../PageHeader'
+import { SectionHero } from '../SectionHero'
 import './Typography.css'
 
 export function Typography() {
   return (
     <div>
-      <PageHeader
-        eyebrow="Brand Kit · Typography"
-        title="Typography"
-        lede="A variable display serif, a workhorse sans, and a mono for data — each with a distinct job, no overlap. Fraunces and Roboto Mono are sourced from Google Fonts; Satoshi from Fontshare."
-      />
+      <SectionHero eyebrow="Brand Kit · Typography" />
+
+      <div className="page-body">
+      <p className="content__lede">
+        A variable display serif, a workhorse sans, and a mono for data — each with a distinct job, no
+        overlap. Fraunces and Roboto Mono are sourced from Google Fonts; Satoshi from Fontshare.
+      </p>
 
       <div className="section">
         <div className="specimen">
@@ -131,6 +133,7 @@ export function Typography() {
             data/code, not stylistic emphasis on prose.
           </p>
         </div>
+      </div>
       </div>
     </div>
   )

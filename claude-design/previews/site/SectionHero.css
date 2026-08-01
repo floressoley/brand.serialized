@@ -1,0 +1,27 @@
+.section-hero {
+  position: relative;
+  height: 42vh;
+  min-height: 320px;
+  overflow: hidden;
+  margin: calc(-1 * var(--space-16)) calc(-1 * var(--space-16)) var(--space-16);
+  width: calc(100% + var(--space-16) * 2);
+  background: var(--color-background);
+}
+
+.section-hero__content {
+  position: absolute;
+  z-index: 1;
+  top: var(--space-16);
+  left: var(--space-16);
+  pointer-events: none;
+}
+
+.section-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-serialized);
+  margin: 0 0 var(--space-3);
+}
+

@@ -1,0 +1,15 @@
+.magnet-lines {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.magnet-lines__bar {
+  display: inline-block;
+  border-radius: 1px;
+  transition: transform 0.26s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
