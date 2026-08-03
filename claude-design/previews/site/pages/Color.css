@@ -6,9 +6,20 @@
 }
 
 .swatch-card {
+  display: block;
+  width: 100%;
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-md);
   overflow: hidden;
+  background: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 120ms ease;
+}
+
+.swatch-card:hover {
+  border-color: var(--color-border-strong);
 }
 
 .swatch-card__fill {
@@ -31,4 +42,8 @@
   font-size: 11px;
   color: var(--color-muted);
   margin: 0;
+}
+
+.swatch-card__hex.swatch-card__hex--copied {
+  color: var(--color-accent-serialized);
 }

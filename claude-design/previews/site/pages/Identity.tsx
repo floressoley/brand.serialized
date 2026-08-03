@@ -1,3 +1,5 @@
+import clearspaceOnDark from '../../../../brand-kit/logo/serialized/serialized-clearspace-on-dark.svg'
+import clearspaceOnLight from '../../../../brand-kit/logo/serialized/serialized-clearspace-on-light.svg'
 import horizontalOnDark from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg'
 import horizontalOnDarkRaw from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg?raw'
 import horizontalOnLight from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-light.svg'
@@ -12,11 +14,9 @@ import wordmarkOnLight from '../../../../brand-kit/logo/serialized/serialized-wo
 import wordmarkOnLightRaw from '../../../../brand-kit/logo/serialized/serialized-wordmark-on-light.svg?raw'
 import fullLogoStretched from '../../../../brand-kit/guidelines/misuse/full-logo-stretched.png'
 import fullLogoOutline from '../../../../brand-kit/guidelines/misuse/full-logo-outline.png'
-import faviconAsset from '../../../../brand-kit/logo/serialized/serialized-favicon.png'
-import iconGrid from '../../../../brand-kit/guidelines/in-use/icon-grid.svg'
-import faviconTabDark from '../../../../brand-kit/guidelines/in-use/favicon-tab-dark.svg'
-import faviconTabLight from '../../../../brand-kit/guidelines/in-use/favicon-tab-light.svg'
-import iosAppDock from '../../../../brand-kit/guidelines/in-use/ios-app-dock.png'
+import faviconDisplay from '../../../../brand-kit/guidelines/in-use/favicon-display.png'
+import faviconSvg from '../../../../brand-kit/logo/serialized/serialized-favicon.svg'
+import faviconSvgRaw from '../../../../brand-kit/logo/serialized/serialized-favicon.svg?raw'
 import { AssetActions } from '../AssetActions'
 import { SectionHero } from '../SectionHero'
 import './Identity.css'
@@ -111,30 +111,18 @@ export function Identity() {
       <div className="section">
         <h2>Clearspace</h2>
         <p style={{ marginBottom: 'var(--space-4)' }}>
-          Unit <strong style={{ color: 'var(--color-text-primary)' }}>X</strong> = the width of a single bar
-          in the mark, a consistent ~6.4% of the mark's height across both the logomark and the full
-          logo — so <code>X = mark height ÷ 16</code>.
+          The clearspace unit is the logomark itself — one logomark-<strong style={{ color: 'var(--color-text-primary)' }}>width</strong> to
+          the left and right, one logomark-<strong style={{ color: 'var(--color-text-primary)' }}>height</strong> above and below. Same rule
+          whether the logomark stands alone or appears in the full lockup.
         </p>
         <div className="clearspace-grid">
           <div className="clearspace-diagram">
-            <div className="clearspace-diagram__zone clearspace-diagram__zone--mark">
-              <img src={markOnDark} alt="Serialized logomark clearspace diagram" />
-              <span className="clearspace-tick clearspace-tick--top">1X</span>
-              <span className="clearspace-tick clearspace-tick--right">1X</span>
-              <span className="clearspace-tick clearspace-tick--bottom">1X</span>
-              <span className="clearspace-tick clearspace-tick--left">1X</span>
-            </div>
-            <div className="clearspace-diagram__caption">Logomark — 1X on all sides</div>
+            <img src={clearspaceOnDark} alt="Serialized logo clearspace grid, on dark" className="clearspace-diagram__img clearspace-diagram__img--dark" />
+            <div className="clearspace-diagram__caption">Clearspace grid — on dark</div>
           </div>
           <div className="clearspace-diagram">
-            <div className="clearspace-diagram__zone clearspace-diagram__zone--lockup">
-              <img src={horizontalOnDark} alt="Serialized full logo clearspace diagram" />
-              <span className="clearspace-tick clearspace-tick--top">1X</span>
-              <span className="clearspace-tick clearspace-tick--right">2X</span>
-              <span className="clearspace-tick clearspace-tick--bottom">1X</span>
-              <span className="clearspace-tick clearspace-tick--left">2X</span>
-            </div>
-            <div className="clearspace-diagram__caption">Full Logo — 1X top/bottom, 2X left/right</div>
+            <img src={clearspaceOnLight} alt="Serialized logo clearspace grid, on light" className="clearspace-diagram__img clearspace-diagram__img--light" />
+            <div className="clearspace-diagram__caption">Clearspace grid — on light</div>
           </div>
         </div>
         <table className="spec-table">
@@ -147,11 +135,11 @@ export function Identity() {
           <tbody>
             <tr>
               <td>Logomark</td>
-              <td>1X on all four sides</td>
+              <td>1 logomark-width left/right, 1 logomark-height top/bottom</td>
             </tr>
             <tr>
               <td>Full Logo</td>
-              <td>1X top/bottom, 2X left/right</td>
+              <td>1 logomark-width left/right, 1 logomark-height top/bottom</td>
             </tr>
           </tbody>
         </table>
@@ -199,30 +187,6 @@ export function Identity() {
           </tbody>
         </table>
         <p>Below these sizes the mark's thin parallel bars start to visually merge. Switch to the logomark alone rather than shrinking the full logo further.</p>
-      </div>
-
-      <div className="section">
-        <h2>Color</h2>
-        <p style={{ marginBottom: 'var(--space-6)' }}>
-          The mark is always monochrome — it never takes an accent color. See <a href="/color" style={{ color: 'var(--color-accent-serialized)' }}>Color</a> for
-          the full grayscale and accent system.
-        </p>
-        <div className="logo-colors">
-          <div className="logo-color-card">
-            <div className="logo-color-card__fill" style={{ background: '#1A1A19' }} />
-            <div className="logo-color-card__meta">
-              <p className="logo-color-card__name">Used on light</p>
-              <p className="logo-color-card__hex">#1A1A19</p>
-            </div>
-          </div>
-          <div className="logo-color-card">
-            <div className="logo-color-card__fill" style={{ background: '#FAF9F6' }} />
-            <div className="logo-color-card__meta">
-              <p className="logo-color-card__name">Used on dark</p>
-              <p className="logo-color-card__hex">#FAF9F6</p>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className="section">
@@ -333,44 +297,16 @@ export function Identity() {
           <li>This is the parent Serialized mark. For SerializedAudit.io, use the Audit lockup on the <a href="/sub-brands" style={{ color: 'var(--color-accent-serialized)' }}>Sub Brands</a> page instead.</li>
         </ul>
 
-        <div className="in-use-grid">
-          <div className="in-use-card">
-            <p className="in-use-card__eyebrow">Icon grid</p>
-            <div className="in-use-card__stage">
-              <img src={iconGrid} alt="Favicon icon grid — construction keylines" className="in-use-card__img" style={{ maxWidth: '140px' }} />
+        <div className="in-use-row">
+          <div className="in-use-row__text">
+            <h3 className="in-use-row__title">Favicon</h3>
+            <p>The logomark alone, matched to the system theme — reads clearly against both light and dark browser chrome.</p>
+            <div className="in-use-row__actions">
+              <AssetActions svg={faviconSvgRaw} href={faviconSvg} filename="serialized-favicon.svg" tone="dark" />
             </div>
-            <p className="in-use-card__caption">The logomark built to Apple's rounded-square keyline system.</p>
           </div>
-          <div className="in-use-card">
-            <p className="in-use-card__eyebrow">Favicon / app icon</p>
-            <div className="in-use-card__stage">
-              <img src={faviconAsset} alt="Favicon — dark rounded-square app icon" className="in-use-card__img" style={{ maxWidth: '140px' }} />
-            </div>
-            <p className="in-use-card__caption">Gradient and grain texture, reserved for this one application.</p>
-          </div>
-          <div className="in-use-card">
-            <p className="in-use-card__eyebrow">iOS home screen</p>
-            <div className="in-use-card__stage in-use-card__stage--bleed-tr">
-              <img src={iosAppDock} alt="App icon shown in the iOS dock" className="in-use-card__img" />
-            </div>
-            <p className="in-use-card__caption">Sits in the dock like any native app icon — no adjustments needed.</p>
-          </div>
-        </div>
-
-        <div className="browser-tab-row">
-          <div className="in-use-card">
-            <p className="in-use-card__eyebrow">Browser tab — dark mode</p>
-            <div className="in-use-card__stage in-use-card__stage--bleed-br in-use-card__stage--browser in-use-card__stage--tab-dark">
-              <img src={faviconTabDark} alt="Favicon shown in a browser tab, dark mode" className="in-use-card__img" />
-            </div>
-            <p className="in-use-card__caption">Reads clearly at 16px, even against dark browser chrome.</p>
-          </div>
-          <div className="in-use-card">
-            <p className="in-use-card__eyebrow">Browser tab — light mode</p>
-            <div className="in-use-card__stage in-use-card__stage--bleed-br in-use-card__stage--browser in-use-card__stage--tab-light">
-              <img src={faviconTabLight} alt="Favicon shown in a browser tab, light mode" className="in-use-card__img" />
-            </div>
-            <p className="in-use-card__caption">Same icon, unchanged — it's designed to hold up on both.</p>
+          <div className="in-use-row__media">
+            <img src={faviconDisplay} alt="Favicon shown in a browser tab, dark and light mode" className="in-use-row__img" />
           </div>
         </div>
       </div>

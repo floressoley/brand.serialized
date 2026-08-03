@@ -1,10 +1,12 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import serializedLogo from '../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg'
 import { BackToTop } from './BackToTop'
 import { NAV_SECTIONS } from './nav-config'
 import './Layout.css'
 
 export function Layout() {
+  const location = useLocation()
+
   return (
     <div className="site">
       <aside className="sidebar">
@@ -31,7 +33,7 @@ export function Layout() {
         </nav>
       </aside>
       <main className="content">
-        <div className="content__inner">
+        <div className="content__inner content__inner--enter" key={location.pathname}>
           <Outlet />
         </div>
       </main>

@@ -1,31 +1,42 @@
 import hatchTexture from '../../../../brand-kit/guidelines/imagery-inspo/hatch-texture.png'
 import hexDump from '../../../../brand-kit/guidelines/imagery-inspo/hex-dump-highlight.png'
-import dotMatrix from '../../../../brand-kit/guidelines/imagery-inspo/dot-matrix-grid.png'
-import asciiMountain from '../../../../brand-kit/guidelines/imagery-inspo/ascii-mountain.png'
-import asciiFrost from '../../../../brand-kit/guidelines/imagery-inspo/ascii-frost.png'
 import { SectionHero } from '../SectionHero'
 import './Voice.css'
 
 const PILLARS = [
   {
-    name: 'Trust',
-    body: 'Consistency and restraint over decoration. Grayscale-first UI, color only where it carries meaning (state, brand vs. product identity). No visual noise competing with the data being presented.',
-  },
-  {
-    name: 'Precision',
-    body: 'Monospace for anything literal (data, code, addresses, hashes). Tight, deliberate grid and spacing. Numbers and technical values are never styled as decoration — they’re presented as-is, legibly.',
+    name: 'Intelligence',
+    body: "Every response should read as interpreted signal, not a data dump. Decompiled contracts, structured onchain events, routed transactions — the product's job is to turn the firehose into something a builder can act on immediately.",
   },
   {
     name: 'Excellence',
     body: 'Editorial polish in the few places warmth is allowed (Fraunces headlines), engineering rigor everywhere else (Roboto Mono, systemized color/type tokens). The contrast between the two is the brand: premium and technical, not one at the expense of the other.',
   },
+  {
+    name: 'Accuracy',
+    body: "No hedging language, no soft claims. State what's verified as verified, and don't dress up a probability as a certainty. When something can't be confirmed, say so plainly instead of rounding up.",
+  },
+  {
+    name: 'Premium',
+    body: 'Confident restraint, not luxury signaling. Premium here means the bar for correctness and clarity is high — not velvet-rope exclusivity or ornamental design.',
+  },
+]
+
+const AUDIENCE = [
+  { title: 'Dev teams', body: 'Building DeFi products, integrating onchain data and routing into their own stack.' },
+  { title: 'Security researchers & auditors', body: 'Reading closed-source contracts, verifying behavior before it ships or gets exploited.' },
+  { title: 'Crypto funds & protocols', body: 'Moving real capital, needing signal they can act on without re-verifying it themselves.' },
+]
+
+const DIFFERENTIATION = [
+  { others: 'Raw onchain data', serialized: 'Interpreted, structured intelligence' },
+  { others: "Can't read closed-source contracts", serialized: 'Proprietary decompilation' },
+  { others: 'Generic endpoints', serialized: 'Audit · Data · Routing — purpose-built APIs' },
+  { others: 'Firehose', serialized: 'Signal' },
 ]
 
 const IMAGERY = [
   { src: hexDump, caption: 'Hex/data dumps — tokens syntax-highlighted against muted mono text' },
-  { src: asciiMountain, caption: 'ASCII-rendered landscapes — real imagery re-rendered as character art' },
-  { src: asciiFrost, caption: 'ASCII-rendered texture — cool accent tint over grayscale character art' },
-  { src: dotMatrix, caption: 'Dot-matrix / hash grids — sparse character fields as ambient texture' },
   { src: hatchTexture, caption: 'Diagonal line-hatch — near-invisible directional background texture' },
 ]
 
@@ -53,6 +64,51 @@ export function Voice() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="section">
+          <h2>Who it's for</h2>
+          <p style={{ marginBottom: 'var(--space-6)' }}>
+            Dev teams, security researchers, funds and protocols — what they share is that they're moving fast,
+            handling real money, and need to be right.
+          </p>
+          <div className="audience-grid">
+            {AUDIENCE.map((item) => (
+              <div className="audience-card" key={item.title}>
+                <p className="audience-card__title">{item.title}</p>
+                <p className="audience-card__body">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="section">
+          <h2>How we make them feel</h2>
+          <p>
+            <strong style={{ color: 'var(--color-text-primary)' }}>Smart.</strong> Like they have an edge others
+            don't — not because we make things simpler, but because we make things clearer. Our customers don't
+            just get data, they get signal.
+          </p>
+        </div>
+
+        <div className="section">
+          <h2>What makes us different</h2>
+          <table className="spec-table">
+            <thead>
+              <tr>
+                <th>Others</th>
+                <th>Serialized</th>
+              </tr>
+            </thead>
+            <tbody>
+              {DIFFERENTIATION.map((row) => (
+                <tr key={row.others}>
+                  <td>{row.others}</td>
+                  <td>{row.serialized}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
         <div className="section">

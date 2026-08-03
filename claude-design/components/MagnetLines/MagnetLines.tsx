@@ -15,6 +15,7 @@
  *   </div>
  */
 import { useEffect, useRef } from 'react'
+import type { CSSProperties } from 'react'
 import './MagnetLines.css'
 
 export interface MagnetLinesProps {
@@ -132,21 +133,33 @@ export function MagnetLines({
         gridTemplateRows: `repeat(${rows}, 1fr)`,
       }}
     >
-      {Array.from({ length: total }, (_, i) => (
-        <span
-          key={i}
-          ref={(el) => {
-            if (el) spansRef.current[i] = el
-          }}
-          className="magnet-lines__bar"
-          style={{
-            width: lineWidth,
-            height: lineHeight,
-            background: lineColor,
-            transform: `rotate(${baseAngle}deg)`,
-          }}
-        />
-      ))}
+      {Array.from({ length: total }, (_, i) => {
+        const row = Math.floor(i / columns)
+        const col = i % columns
+        const dRow = row / rows - 0.5
+        const dCol = col / columns - 0.5
+        const distance = Math.sqrt(dRow * dRow + dCol * dCol)
+        const delayMs = Math.round(distance * 420)
+
+        return (
+          <span
+            key={i}
+            ref={(el) => {
+              if (el) spansRef.current[i] = el
+            }}
+            className="magnet-lines__bar"
+            style={
+              {
+                width: lineWidth,
+                height: lineHeight,
+                background: lineColor,
+                transform: `rotate(${baseAngle}deg)`,
+                '--enter-delay': `${delayMs}ms`,
+              } as CSSProperties
+            }
+          />
+        )
+      })}
     </div>
   )
 }

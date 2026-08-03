@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { SectionHero } from '../SectionHero'
 import './Color.css'
 
@@ -48,6 +49,26 @@ const GROUPS = [
   },
 ]
 
+function SwatchCard({ name, hex }: { name: string; hex: string }) {
+  const [copied, setCopied] = useState(false)
+
+  async function handleCopy() {
+    await navigator.clipboard.writeText(hex)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1200)
+  }
+
+  return (
+    <button type="button" className="swatch-card" onClick={handleCopy}>
+      <div className="swatch-card__fill" style={{ background: hex }} />
+      <div className="swatch-card__meta">
+        <p className="swatch-card__name">{name}</p>
+        <p className={`swatch-card__hex${copied ? ' swatch-card__hex--copied' : ''}`}>{copied ? 'Copied' : hex}</p>
+      </div>
+    </button>
+  )
+}
+
 export function Color() {
   return (
     <div>
@@ -65,13 +86,7 @@ export function Color() {
           <p style={{ marginBottom: 'var(--space-6)' }}>{group.body}</p>
           <div className="swatch-grid">
             {group.swatches.map(([name, hex]) => (
-              <div className="swatch-card" key={name}>
-                <div className="swatch-card__fill" style={{ background: hex }} />
-                <div className="swatch-card__meta">
-                  <p className="swatch-card__name">{name}</p>
-                  <p className="swatch-card__hex">{hex}</p>
-                </div>
-              </div>
+              <SwatchCard name={name} hex={hex} key={name} />
             ))}
           </div>
         </div>

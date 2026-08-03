@@ -4,16 +4,20 @@ import './Introduction.css'
 
 const PILLARS = [
   {
-    title: 'Trust',
-    body: 'Consistency and restraint over decoration. Grayscale-first UI, color only where it carries meaning. No visual noise competing with the data being presented.',
-  },
-  {
-    title: 'Precision',
-    body: 'Monospace for anything literal — data, code, addresses, hashes. A tight, deliberate grid. Numbers are presented as-is, legibly, never as decoration.',
+    title: 'Intelligence',
+    body: 'Raw data becomes signal. Closed-source contracts decompiled, onchain activity structured and interpreted — builders get meaning, not just a feed.',
   },
   {
     title: 'Excellence',
     body: 'Editorial polish where warmth is allowed, engineering rigor everywhere else. Premium and technical, not one at the expense of the other.',
+  },
+  {
+    title: 'Accuracy',
+    body: "Wrong isn't an option when real money moves through the pipes. Verification and confidence are built into the product, not bolted on after.",
+  },
+  {
+    title: 'Premium',
+    body: 'Premium, not exclusive. The bar is high because the stakes are high — not to gatekeep who gets to build.',
   },
 ]
 
@@ -32,10 +36,14 @@ export function Introduction() {
       <SectionHero eyebrow="Brand Kit · Introduction" />
 
       <div className="page-body">
+        <h1 className="content__title">
+          The onchain intelligence layer for builders who can't afford to be wrong.
+        </h1>
         <p className="content__lede">
-          A monochromatic system built for Trust, Precision, and Excellence. Grayscale carries the structure;
-          color is reserved for meaning — brand identity, product identity, and state. Here's what keeps it
-          recognizable, and where each part lives.
+          Serialized is a B2B API platform that gives crypto builders an intelligence edge — read closed-source
+          contracts, get clean onchain data, and route transactions with precision, all through a single
+          platform. This is the monochromatic system built to carry that positioning: grayscale carries the
+          structure, color is reserved for meaning. Here's what keeps it recognizable, and where each part lives.
         </p>
 
         <div className="pillars">
