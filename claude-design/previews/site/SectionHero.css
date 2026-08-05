@@ -19,7 +19,7 @@
 .section-hero__eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--font-mono-label-tracking);
   text-transform: uppercase;
   color: var(--color-accent-serialized);
   margin: 0 0 var(--space-3);

@@ -1,11 +1,39 @@
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import serializedLogo from '../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg'
 import { BackToTop } from './BackToTop'
 import { NAV_SECTIONS } from './nav-config'
 import './Layout.css'
 
+function ChevronIcon({ expanded }: { expanded: boolean }) {
+  return (
+    <svg
+      className={`sidebar__chevron${expanded ? ' sidebar__chevron--expanded' : ''}`}
+      width="14"
+      height="14"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
+      <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 export function Layout() {
   const location = useLocation()
+  const [openPath, setOpenPath] = useState<string | null>(
+    NAV_SECTIONS.find((s) => s.children && s.path !== '/' && location.pathname.startsWith(s.path))?.path ?? null,
+  )
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
+
+  useEffect(() => {
+    if (!location.hash) return
+    const el = document.getElementById(location.hash.slice(1))
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [location.pathname, location.hash])
 
   return (
     <div className="site">
@@ -16,19 +44,56 @@ export function Layout() {
         <div className="sidebar__label">Brand</div>
         <nav>
           <ul className="sidebar__nav">
-            {NAV_SECTIONS.map((section) => (
-              <li key={section.path}>
-                <NavLink
-                  to={section.path}
-                  end={section.path === '/'}
-                  className={({ isActive }) =>
-                    ['sidebar__link', isActive ? 'sidebar__link--active' : ''].filter(Boolean).join(' ')
-                  }
-                >
-                  {section.label}
-                </NavLink>
-              </li>
-            ))}
+            {NAV_SECTIONS.map((section) => {
+              const hasChildren = !!section.children?.length
+              const isOpen = hasChildren && openPath === section.path
+              return (
+                <li key={section.path}>
+                  <div className="sidebar__row">
+                    <NavLink
+                      to={section.path}
+                      end={section.path === '/'}
+                      className={({ isActive }) =>
+                        ['sidebar__link', isActive ? 'sidebar__link--active' : ''].filter(Boolean).join(' ')
+                      }
+                    >
+                      {section.label}
+                    </NavLink>
+                    {hasChildren && (
+                      <button
+                        type="button"
+                        className="sidebar__toggle"
+                        aria-label={isOpen ? `Collapse ${section.label}` : `Expand ${section.label}`}
+                        onClick={() => setOpenPath(isOpen ? null : section.path)}
+                      >
+                        <ChevronIcon expanded={isOpen} />
+                      </button>
+                    )}
+                  </div>
+                  {hasChildren && isOpen && (
+                    <ul className="sidebar__subnav">
+                      {section.children!.map((child) => (
+                        <li key={child.id}>
+                          <Link
+                            to={`${section.path}#${child.id}`}
+                            className={[
+                              'sidebar__sublink',
+                              location.pathname === section.path && location.hash === `#${child.id}`
+                                ? 'sidebar__sublink--active'
+                                : '',
+                            ]
+                              .filter(Boolean)
+                              .join(' ')}
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              )
+            })}
           </ul>
         </nav>
       </aside>

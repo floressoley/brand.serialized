@@ -31,6 +31,8 @@
 
 .nav__link {
   font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  letter-spacing: var(--font-body-letter-spacing);
   font-size: 14px;
   color: var(--color-text-secondary);
   text-decoration: none;

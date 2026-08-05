@@ -3,9 +3,15 @@
   --font-display: 'Fraunces', serif;
   --font-body: 'Satoshi', sans-serif;
   --font-mono: 'Roboto Mono', monospace;
+  --font-mono-letter-spacing: 0.02em;
+  /* 2% em reads as intended on Tertiary-scale mono text (13px+). At the small uppercase-caps
+     sizes UI chrome actually uses (10-12px: eyebrows, nav labels, badges, table headers), 2%
+     rounds to a sub-pixel value and disappears — use this instead for those. */
+  --font-mono-label-tracking: 0.08em;
 
   /* Fraunces variable axes — short text only (headlines/titles), never body copy */
   --font-display-settings: 'opsz' 38, 'wght' 360, 'SOFT' 17, 'WONK' 0.36;
+  --font-display-letter-spacing: -1px;
 
   /* Satoshi — Regular weight, tracked out slightly */
   --font-body-weight: 400;
@@ -16,6 +22,7 @@
 .font-display {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
+  letter-spacing: var(--font-display-letter-spacing);
 }
 
 .font-body {
@@ -26,4 +33,79 @@
 
 .font-mono {
   font-family: var(--font-mono);
+  letter-spacing: var(--font-mono-letter-spacing);
+}
+
+/* Type scale — Serialized's "Type Usage" system. See /typography for the live specimen.
+   Fraunces goes lighter and softer (wght 320, SOFT 47) at display sizes; the 360/17 default stays for short headings/titles. */
+:root {
+  --font-display-large-settings: 'opsz' 38, 'wght' 320, 'SOFT' 47, 'WONK' 0.36;
+
+  --text-display-large-size: 96px;
+  --text-display-large-line-height: 0.95;
+  --text-display-large-tracking: -0.02em;
+
+  --text-headline-large-size: 56px;
+  --text-headline-large-line-height: 0.95;
+  --text-headline-large-tracking: -0.02em;
+
+  --text-headline-size: 32px;
+  --text-headline-line-height: 1.05;
+  --text-headline-tracking: -0.01em;
+
+  --text-subheadline-size: 22px;
+  --text-subheadline-line-height: 1.1;
+  --text-subheadline-tracking: -0.01em;
+
+  --text-body-line-height: 1.1;
+
+  --text-tertiary-size: 12px;
+  --text-tertiary-line-height: 1.2;
+}
+
+.text-display-large {
+  font-family: var(--font-display);
+  font-variation-settings: var(--font-display-large-settings);
+  font-size: var(--text-display-large-size);
+  line-height: var(--text-display-large-line-height);
+  letter-spacing: var(--text-display-large-tracking);
+}
+
+.text-headline-large {
+  font-family: var(--font-display);
+  font-variation-settings: var(--font-display-large-settings);
+  font-size: var(--text-headline-large-size);
+  line-height: var(--text-headline-large-line-height);
+  letter-spacing: var(--text-headline-large-tracking);
+}
+
+.text-headline {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-headline-size);
+  line-height: var(--text-headline-line-height);
+  letter-spacing: var(--text-headline-tracking);
+}
+
+.text-subheadline {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-subheadline-size);
+  line-height: var(--text-subheadline-line-height);
+  letter-spacing: var(--text-subheadline-tracking);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  font-size: var(--font-body-size);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--font-body-letter-spacing);
+}
+
+.text-tertiary {
+  font-family: var(--font-mono);
+  font-size: var(--text-tertiary-size);
+  line-height: var(--text-tertiary-line-height);
+  letter-spacing: var(--font-mono-letter-spacing);
 }

@@ -1,35 +1,54 @@
+.intro-statement {
+  font-family: var(--font-display);
+  font-variation-settings: var(--font-display-large-settings);
+  letter-spacing: var(--text-headline-large-tracking);
+  font-size: 34px;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  max-width: none;
+  margin: 0 0 var(--space-16);
+}
+
 .pillars {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
   margin-bottom: var(--space-16);
 }
 
 .pillar {
-  border: 1px solid var(--color-border-default);
+  background: var(--color-surface);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
 }
 
-.pillar__index {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-muted);
+.pillar__label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
   margin-bottom: var(--space-3);
 }
 
-.pillar__title {
-  font-family: var(--font-display);
-  font-variation-settings: var(--font-display-settings);
-  font-size: 20px;
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-2);
+.pillar__label-index {
+  font-family: var(--font-mono);
+  letter-spacing: var(--font-mono-label-tracking);
+  font-size: 13px;
+  color: var(--color-accent-serialized);
+}
+
+.pillar__label-title {
+  font-family: var(--font-mono);
+  letter-spacing: var(--font-mono-label-tracking);
+  font-size: 13px;
+  color: var(--color-accent-serialized);
 }
 
 .pillar__body {
   font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.6;
+  font-weight: var(--font-body-weight);
+  font-size: var(--font-body-size);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--font-body-letter-spacing);
   color: var(--color-text-secondary);
   margin: 0;
 }
@@ -57,14 +76,18 @@
 .map-card__title {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-body-size);
+  letter-spacing: var(--font-body-letter-spacing);
   color: var(--color-text-primary);
   margin: 0 0 var(--space-1);
 }
 
 .map-card__desc {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-weight: var(--font-body-weight);
+  font-size: var(--font-body-size);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--font-body-letter-spacing);
   color: var(--color-text-secondary);
   margin: 0;
 }

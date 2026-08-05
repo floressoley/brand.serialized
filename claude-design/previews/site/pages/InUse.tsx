@@ -12,9 +12,10 @@ const auditRows = [
 export function InUse() {
   return (
     <div>
-      <SectionHero eyebrow="Brand Kit · In Use" />
+      <SectionHero />
 
       <div className="page-body">
+      <p className="content__eyebrow">Brand Kit · In Use</p>
       <p className="content__lede">
         The system applied to a SerializedAudit.io-style scan page — components from
         claude-design/components, built on the tokens documented in this kit.

@@ -1,315 +1,239 @@
-import clearspaceOnDark from '../../../../brand-kit/logo/serialized/serialized-clearspace-on-dark.svg'
-import clearspaceOnLight from '../../../../brand-kit/logo/serialized/serialized-clearspace-on-light.svg'
-import horizontalOnDark from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg'
-import horizontalOnDarkRaw from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg?raw'
-import horizontalOnLight from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-light.svg'
-import horizontalOnLightRaw from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-light.svg?raw'
-import markOnDark from '../../../../brand-kit/logo/serialized/serialized-logomark-on-dark.svg'
-import markOnDarkRaw from '../../../../brand-kit/logo/serialized/serialized-logomark-on-dark.svg?raw'
-import markOnLight from '../../../../brand-kit/logo/serialized/serialized-logomark-on-light.svg'
-import markOnLightRaw from '../../../../brand-kit/logo/serialized/serialized-logomark-on-light.svg?raw'
-import wordmarkOnDark from '../../../../brand-kit/logo/serialized/serialized-wordmark-on-dark.svg'
-import wordmarkOnDarkRaw from '../../../../brand-kit/logo/serialized/serialized-wordmark-on-dark.svg?raw'
-import wordmarkOnLight from '../../../../brand-kit/logo/serialized/serialized-wordmark-on-light.svg'
-import wordmarkOnLightRaw from '../../../../brand-kit/logo/serialized/serialized-wordmark-on-light.svg?raw'
-import fullLogoStretched from '../../../../brand-kit/guidelines/misuse/full-logo-stretched.png'
-import fullLogoOutline from '../../../../brand-kit/guidelines/misuse/full-logo-outline.png'
-import faviconDisplay from '../../../../brand-kit/guidelines/in-use/favicon-display.png'
-import faviconSvg from '../../../../brand-kit/logo/serialized/serialized-favicon.svg'
-import faviconSvgRaw from '../../../../brand-kit/logo/serialized/serialized-favicon.svg?raw'
-import { AssetActions } from '../AssetActions'
+import type { ReactNode } from 'react'
+import hatchTexture from '../../../../brand-kit/guidelines/imagery-inspo/hatch-texture.png'
+import hexDump from '../../../../brand-kit/guidelines/imagery-inspo/hex-dump-highlight.png'
 import { SectionHero } from '../SectionHero'
 import './Identity.css'
+
+const AUDIENCE = [
+  { title: 'Dev teams', body: 'Building DeFi products, integrating onchain data and routing into their own stack.' },
+  { title: 'Security researchers & auditors', body: 'Reading closed-source contracts, verifying behavior before it ships or gets exploited.' },
+  { title: 'Crypto funds & protocols', body: 'Moving real capital, needing signal they can act on without re-verifying it themselves.' },
+]
+
+const BELIEFS = [
+  {
+    name: 'Trust',
+    body: 'Restraint over decoration. Grayscale carries the structure; color only where it means something.',
+  },
+  {
+    name: 'Speed',
+    body: "Answers at the pace decisions get made. Signal that's late is just history.",
+  },
+  {
+    name: 'Precision',
+    body: 'Monospace for anything literal. Data and technical values, presented exactly as they are.',
+  },
+  {
+    name: 'Accuracy',
+    body: "No hedging, no soft claims. What's verified is stated as verified — nothing rounded up.",
+  },
+  {
+    name: 'Premium',
+    body: 'Confident restraint, not luxury signaling. High bar, not a velvet rope.',
+  },
+]
+
+const VALUES = [
+  { title: 'Clarity over cleverness', body: 'Say the true thing plainly. If a sentence needs unpacking, it needed rewriting.' },
+  { title: 'Evidence over opinion', body: "Show the reasoning, not just the verdict. A risk score without a 'why' is just a number." },
+  { title: 'Systems over one-offs', body: 'Build the standard once, apply it everywhere — a rule that only holds sometimes is not a rule.' },
+  { title: 'Builders over gatekeepers', body: 'Premium is a bar, not a velvet rope. The standard stays high; who gets to meet it stays open.' },
+]
+
+const DIFFERENTIATION = [
+  { others: 'Raw onchain data', serialized: 'Interpreted, structured intelligence' },
+  { others: "Can't read closed-source contracts", serialized: 'Proprietary decompilation' },
+  { others: 'Generic endpoints', serialized: 'Audit · Data · Routing — purpose-built APIs' },
+  { others: 'Firehose', serialized: 'Signal' },
+]
+
+const VIBES = ['Austere', 'Engineered', 'Unhyped', 'Legible', 'Composed']
+
+const IMAGERY = [
+  { src: hexDump, caption: 'Hex/data dumps — tokens syntax-highlighted against muted mono text' },
+  { src: hatchTexture, caption: 'Diagonal line-hatch — near-invisible directional background texture' },
+]
+
+const PROMISES = [
+  "We'll never dress up a probability as a certainty.",
+  "We'll always show the reasoning, not just the number.",
+  'We read closed-source contracts other tools can\'t.',
+  'We ship purpose-built APIs — Audit, Data, Routing — not generic endpoints.',
+]
+
+const VOICE_RULES = [
+  'State findings and facts plainly — this is an audit tool, not a pitch.',
+  'Short Fraunces statements for emphasis; everything else in Satoshi, plain and clear.',
+  'Never editorialize a risk score. Report the number and the reasoning, not a verdict dressed as opinion.',
+]
+
+interface RowProps {
+  index: string
+  label: string
+  children: ReactNode
+}
+
+function Row({ index, label, children }: RowProps) {
+  return (
+    <div className="identity-row" id={label.toLowerCase()}>
+      <div className="identity-row__label">
+        <span className="identity-row__index">{index}</span>
+        <span>{label}</span>
+      </div>
+      <div className="identity-row__content">{children}</div>
+    </div>
+  )
+}
 
 export function Identity() {
   return (
     <div>
-      <SectionHero eyebrow="Brand Kit · Marks & Lockups" />
+      <SectionHero />
 
       <div className="page-body">
-      <p className="content__lede">
-        Three diagonal parallelogram bars of increasing length — an abstracted slash/serial mark, paired with
-        a display wordmark. Full logo, wordmark, and logomark each have a distinct role — here's when to use
-        which, and how to keep the mark intact.
-      </p>
-
-      <div className="section">
-        <h2>Full Logo</h2>
-        <p style={{ marginBottom: 'var(--space-6)' }}>
-          The full logo pairs the raw slash mark with Fraunces' refined letterforms — a premium typographic
-          treatment. The contrast between the raw slash and the refined letterforms suggests speed meeting
-          precision.
+        <p className="content__eyebrow">Brand Kit · Identity</p>
+        <p className="content__lede">
+          What Serialized is, why it exists, and what it won't compromise on — the source of truth for
+          everything else in this kit.
         </p>
-        <div className="logo-pair">
-          <div>
-            <div className="logo-stage logo-stage--dark">
-              <img src={horizontalOnDark} alt="Serialized full logo, on dark" />
-              <AssetActions svg={horizontalOnDarkRaw} href={horizontalOnDark} filename="serialized-horizontal-on-dark.svg" tone="dark" />
-            </div>
-            <div className="logo-pair__label">On dark — #0F0F0F</div>
-          </div>
-          <div>
-            <div className="logo-stage logo-stage--light">
-              <img src={horizontalOnLight} alt="Serialized full logo, on light" />
-              <AssetActions svg={horizontalOnLightRaw} href={horizontalOnLight} filename="serialized-horizontal-on-light.svg" tone="light" />
-            </div>
-            <div className="logo-pair__label">On light — #FAF9F6</div>
-          </div>
-        </div>
-      </div>
 
-      <div className="section">
-        <h2>Wordmark</h2>
-        <p style={{ marginBottom: 'var(--space-6)' }}>
-          "Serialized" set in Fraunces alone, without the slash mark — for contexts where the logomark already
-          appears elsewhere on the page (browser chrome, app header) or where space is too tight for the full
-          lockup at a legible size. See <a href="/typography" style={{ color: 'var(--color-accent-serialized)' }}>Typography</a> for
-          the full type system.
-        </p>
-        <div className="logo-pair">
-          <div>
-            <div className="logo-stage logo-stage--dark">
-              <img src={wordmarkOnDark} alt="Serialized wordmark, on dark" />
-              <AssetActions svg={wordmarkOnDarkRaw} href={wordmarkOnDark} filename="serialized-wordmark-on-dark.svg" tone="dark" />
-            </div>
-            <div className="logo-pair__label">On dark</div>
-          </div>
-          <div>
-            <div className="logo-stage logo-stage--light">
-              <img src={wordmarkOnLight} alt="Serialized wordmark, on light" />
-              <AssetActions svg={wordmarkOnLightRaw} href={wordmarkOnLight} filename="serialized-wordmark-on-light.svg" tone="light" />
-            </div>
-            <div className="logo-pair__label">On light</div>
-          </div>
-        </div>
-      </div>
+        <div className="identity-rows">
+          <Row index="01" label="Purpose">
+            <h2>Why we exist</h2>
+            <p className="identity-statement">
+              Onchain data is abundant; understanding it isn't. Serialized turns opaque, high-stakes systems —
+              closed-source contracts, raw onchain events — into something a builder can read, trust, and act
+              on immediately.
+            </p>
+          </Row>
 
-      <div className="section">
-        <h2>Logomark</h2>
-        <p style={{ marginBottom: 'var(--space-6)' }}>
-          The mark alone, no wordmark — used where space is constrained (favicons, avatars, app icons) or
-          alongside an already-established wordmark elsewhere on the page.
-        </p>
-        <div className="logo-pair">
-          <div>
-            <div className="logo-stage logo-stage--dark logo-stage--mark">
-              <img src={markOnDark} alt="Serialized logomark, on dark" />
-              <AssetActions svg={markOnDarkRaw} href={markOnDark} filename="serialized-logomark-on-dark.svg" tone="dark" />
+          <Row index="02" label="Audience">
+            <h2>Who it's for</h2>
+            <p style={{ marginBottom: 'var(--space-6)' }}>
+              Dev teams, security researchers, funds and protocols — what they share is that they're moving
+              fast, handling real money, and need to be right.
+            </p>
+            <div className="identity-audience">
+              {AUDIENCE.map((item) => (
+                <div className="identity-audience__card" key={item.title}>
+                  <p className="identity-audience__title">{item.title}</p>
+                  <p className="identity-audience__body">{item.body}</p>
+                </div>
+              ))}
             </div>
-            <div className="logo-pair__label">On dark</div>
-          </div>
-          <div>
-            <div className="logo-stage logo-stage--light logo-stage--mark">
-              <img src={markOnLight} alt="Serialized logomark, on light" />
-              <AssetActions svg={markOnLightRaw} href={markOnLight} filename="serialized-logomark-on-light.svg" tone="light" />
-            </div>
-            <div className="logo-pair__label">On light</div>
-          </div>
-        </div>
-      </div>
+          </Row>
 
-      <div className="section">
-        <h2>Clearspace</h2>
-        <p style={{ marginBottom: 'var(--space-4)' }}>
-          The clearspace unit is the logomark itself — one logomark-<strong style={{ color: 'var(--color-text-primary)' }}>width</strong> to
-          the left and right, one logomark-<strong style={{ color: 'var(--color-text-primary)' }}>height</strong> above and below. Same rule
-          whether the logomark stands alone or appears in the full lockup.
-        </p>
-        <div className="clearspace-grid">
-          <div className="clearspace-diagram">
-            <img src={clearspaceOnDark} alt="Serialized logo clearspace grid, on dark" className="clearspace-diagram__img clearspace-diagram__img--dark" />
-            <div className="clearspace-diagram__caption">Clearspace grid — on dark</div>
-          </div>
-          <div className="clearspace-diagram">
-            <img src={clearspaceOnLight} alt="Serialized logo clearspace grid, on light" className="clearspace-diagram__img clearspace-diagram__img--light" />
-            <div className="clearspace-diagram__caption">Clearspace grid — on light</div>
-          </div>
-        </div>
-        <table className="spec-table">
-          <thead>
-            <tr>
-              <th>Lockup</th>
-              <th>Minimum clearspace</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Logomark</td>
-              <td>1 logomark-width left/right, 1 logomark-height top/bottom</td>
-            </tr>
-            <tr>
-              <td>Full Logo</td>
-              <td>1 logomark-width left/right, 1 logomark-height top/bottom</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          Clearspace is measured from the outermost edge of the artwork, not the SVG bounding box. Nothing —
-          text, imagery, UI chrome, other marks — may enter the clearspace zone.
-        </p>
-      </div>
+          <Row index="03" label="Feeling">
+            <h2>How we make them feel</h2>
+            <p>
+              <strong style={{ color: 'var(--color-text-primary)' }}>Smart.</strong> Like they have an edge
+              others don't — not because we make things simpler, but because we make things clearer. Our
+              customers don't just get data, they get signal.
+            </p>
+          </Row>
 
-      <div className="section">
-        <h2>Minimum size</h2>
-        <div className="minsize-grid">
-          <div className="minsize-card">
-            <div className="minsize-card__stage">
-              <img src={markOnDark} alt="Logomark at minimum digital size, 24 pixels" style={{ height: '24px', width: 'auto' }} />
+          <Row index="04" label="Beliefs">
+            <h2>Beliefs</h2>
+            <p style={{ marginBottom: 'var(--space-6)' }}>What we hold to, no matter what we ship.</p>
+            <div className="identity-beliefs">
+              {BELIEFS.map((b) => (
+                <div className="identity-belief" key={b.name}>
+                  <h3 className="identity-belief__name">{b.name}</h3>
+                  <p className="identity-belief__body">{b.body}</p>
+                </div>
+              ))}
             </div>
-            <div className="minsize-card__caption">Logomark — 24px min height (digital)</div>
-          </div>
-          <div className="minsize-card">
-            <div className="minsize-card__stage">
-              <img src={horizontalOnDark} alt="Full logo at minimum digital size, 120 pixels wide" style={{ width: '120px', height: 'auto' }} />
-            </div>
-            <div className="minsize-card__caption">Full Logo — 120px min width (digital)</div>
-          </div>
-        </div>
-        <table className="spec-table">
-          <thead>
-            <tr>
-              <th>Lockup</th>
-              <th>Digital (screen)</th>
-              <th>Print</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Logomark (standalone)</td>
-              <td>24px height</td>
-              <td>6mm / 0.25in height</td>
-            </tr>
-            <tr>
-              <td>Full Logo</td>
-              <td>120px width (≈21px height)</td>
-              <td>25mm / 1in width</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>Below these sizes the mark's thin parallel bars start to visually merge. Switch to the logomark alone rather than shrinking the full logo further.</p>
-      </div>
+          </Row>
 
-      <div className="section">
-        <h2>Misuse</h2>
-        <div className="misuse-grid">
-          <div className="misuse-card">
-            <div className="misuse-card__stage">
-              <div
-                role="img"
-                aria-label="Recolored logomark — incorrect"
-                className="misuse-card__tint"
-                style={{ WebkitMaskImage: `url(${markOnDark})`, maskImage: `url(${markOnDark})` }}
-              />
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Recolor the mark — no accent colors, gradients, or off-brand tones.</p>
-          </div>
-          <div className="misuse-card">
-            <div className="misuse-card__stage">
-              <img src={markOnDark} alt="Rotated logomark — incorrect" style={{ height: '64px', width: 'auto', transform: 'rotate(24deg)' }} />
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Rotate, skew, or otherwise distort the mark's proportions.</p>
-          </div>
-          <div className="misuse-card">
-            <div className="misuse-card__stage">
-              <img
-                src={markOnDark}
-                alt="Logomark with a drop shadow — incorrect"
-                style={{ height: '64px', width: 'auto', filter: 'drop-shadow(0 6px 8px rgba(0,0,0,0.7)) drop-shadow(0 0 6px rgba(126,171,245,0.8))' }}
-              />
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Add drop shadows, glows, or other effects.</p>
-          </div>
-          <div className="misuse-card">
-            <div className="misuse-card__stage misuse-card__stage--light">
-              <img src={markOnDark} alt="On-dark mark placed on a light background — nearly invisible" style={{ height: '64px', width: 'auto' }} />
-              <span className="misuse-card__ghost-note">↑ barely there — same tone as the background</span>
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Place an <code>on-dark</code> variant on a light background, or vice versa.</p>
-          </div>
-          <div className="misuse-card">
-            <div className="misuse-card__stage">
-              <span className="misuse-card__fake-wordmark">Serialized</span>
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Recreate the wordmark in another typeface — always Fraunces.</p>
-          </div>
-          <div className="misuse-card">
-            <div className="misuse-card__stage">
-              <img src={fullLogoStretched} alt="Full logo stretched non-uniformly — incorrect" style={{ height: '20px', width: 'auto' }} />
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Stretch or squash the full logo — scale the lockup uniformly only.</p>
-          </div>
-          <div className="misuse-card">
-            <div className="misuse-card__stage" style={{ gap: 'var(--space-8)' }}>
-              <img src={wordmarkOnDark} alt="Wordmark and logomark reordered and separated — incorrect" style={{ height: '22px', width: 'auto' }} />
-              <img src={markOnDark} alt="" style={{ height: '32px', width: 'auto' }} />
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Rearrange or add extra space between the mark and wordmark — the lockup's spacing is fixed.</p>
-          </div>
-          <div className="misuse-card">
-            <div className="misuse-card__stage" style={{ gap: 'var(--space-2)' }}>
-              <div
-                role="img"
-                aria-label="Logomark and wordmark in mismatched colors — incorrect"
-                style={{
-                  height: '28px',
-                  width: '28px',
-                  background: 'var(--color-accent-serialized)',
-                  WebkitMaskImage: `url(${markOnDark})`,
-                  maskImage: `url(${markOnDark})`,
-                  WebkitMaskSize: 'contain',
-                  maskSize: 'contain',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskPosition: 'center',
-                  maskPosition: 'center',
-                }}
-              />
-              <img src={wordmarkOnDark} alt="" style={{ height: '20px', width: 'auto' }} />
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Use different colors for the mark and wordmark — they're always the same tone.</p>
-          </div>
-          <div className="misuse-card">
-            <div className="misuse-card__stage">
-              <img src={fullLogoOutline} alt="Full logo with an outline stroke — incorrect" style={{ height: '28px', width: 'auto' }} />
-            </div>
-            <span className="misuse-card__badge">✕ DO NOT</span>
-            <p className="misuse-card__caption">Add an outline or stroke around the mark or wordmark.</p>
-          </div>
-        </div>
-        <ul className="rule-list" style={{ marginTop: 'var(--space-6)' }}>
-          <li>Don't substitute the parent Serialized mark for a sub-brand lockup, or vice versa — each signals a distinct context to the user.</li>
-        </ul>
-      </div>
+          <Row index="05" label="Vision">
+            <h2>Where we're going</h2>
+            <p className="identity-statement">
+              Serialized starts as the layer that makes closed-source contracts and onchain activity legible.
+              Where it's headed is broader: audit, data, and routing under one standard of rigor, so "verified
+              by Serialized" means something on its own.
+            </p>
+          </Row>
 
-      <div className="section">
-        <h2>In Use</h2>
-        <ul className="rule-list">
-          <li>Favicon, app icon, social avatars — logomark alone, on its native background color.</li>
-          <li>Site headers, marketing, and documents — full logo, sized generously where space allows.</li>
-          <li>This is the parent Serialized mark. For SerializedAudit.io, use the Audit lockup on the <a href="/sub-brands" style={{ color: 'var(--color-accent-serialized)' }}>Sub Brands</a> page instead.</li>
-        </ul>
-
-        <div className="in-use-row">
-          <div className="in-use-row__text">
-            <h3 className="in-use-row__title">Favicon</h3>
-            <p>The logomark alone, matched to the system theme — reads clearly against both light and dark browser chrome.</p>
-            <div className="in-use-row__actions">
-              <AssetActions svg={faviconSvgRaw} href={faviconSvg} filename="serialized-favicon.svg" tone="dark" />
+          <Row index="06" label="Values">
+            <h2>Brand values</h2>
+            <div className="identity-values">
+              {VALUES.map((v) => (
+                <div className="identity-value" key={v.title}>
+                  <h3 className="identity-value__title">{v.title}</h3>
+                  <p className="identity-value__body">{v.body}</p>
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="in-use-row__media">
-            <img src={faviconDisplay} alt="Favicon shown in a browser tab, dark and light mode" className="in-use-row__img" />
-          </div>
+          </Row>
+
+          <Row index="07" label="Difference">
+            <h2>What makes us different</h2>
+            <table className="spec-table">
+              <thead>
+                <tr>
+                  <th>Others</th>
+                  <th>Serialized</th>
+                </tr>
+              </thead>
+              <tbody>
+                {DIFFERENTIATION.map((row) => (
+                  <tr key={row.others}>
+                    <td>{row.others}</td>
+                    <td>{row.serialized}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Row>
+
+          <Row index="08" label="Vibes">
+            <h2>Brand vibes</h2>
+            <p style={{ marginBottom: 'var(--space-6)' }}>
+              If Serialized were a room, it's a clean workstation at 2am — no clutter, one accent light,
+              everything exactly where it should be. Visually, that shows up as ASCII-art and terminal-native
+              texture, always monochrome-with-accent — imagery generated <em>from</em> structure, never
+              photographic or illustrative without that data-native treatment.
+            </p>
+            <div className="identity-vibes">
+              {VIBES.map((v) => (
+                <span className="identity-vibe" key={v}>
+                  {v}
+                </span>
+              ))}
+            </div>
+            <div className="identity-imagery">
+              {IMAGERY.map((item) => (
+                <div className="identity-imagery__card" key={item.caption}>
+                  <img src={item.src} alt={item.caption} />
+                  <div className="identity-imagery__caption">{item.caption}</div>
+                </div>
+              ))}
+            </div>
+          </Row>
+
+          <Row index="09" label="Promises">
+            <h2>Product promises</h2>
+            <ul className="identity-promises">
+              {PROMISES.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+          </Row>
+
+          <Row index="10" label="Voice">
+            <h2>Tone of voice</h2>
+            <p style={{ marginBottom: 'var(--space-6)' }}>
+              Direct, technical, unhyped. Serialized states findings and facts plainly — credibility depends on
+              not sounding like marketing copy, especially on SerializedAudit.io, where the product's entire
+              value is trustworthy data.
+            </p>
+            <ul className="identity-promises">
+              {VOICE_RULES.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </Row>
         </div>
-      </div>
       </div>
     </div>
   )

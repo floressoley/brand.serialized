@@ -5,8 +5,8 @@ import '../tokens/index.css'
 import './site/site.css'
 import { Layout } from './site/Layout'
 import { Introduction } from './site/pages/Introduction'
-import { Voice } from './site/pages/Voice'
 import { Identity } from './site/pages/Identity'
+import { Logos } from './site/pages/Logos'
 import { Color } from './site/pages/Color'
 import { Typography } from './site/pages/Typography'
 import { SubBrands } from './site/pages/SubBrands'
@@ -18,8 +18,8 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Introduction />} />
-          <Route path="voice" element={<Voice />} />
           <Route path="identity" element={<Identity />} />
+          <Route path="logos" element={<Logos />} />
           <Route path="color" element={<Color />} />
           <Route path="typography" element={<Typography />} />
           <Route path="sub-brands" element={<SubBrands />} />

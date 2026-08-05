@@ -22,10 +22,10 @@ const PILLARS = [
 ]
 
 const MAP = [
-  { to: '/voice', title: 'Voice & Messaging', desc: 'How Serialized sounds — pillars, tone, imagery direction.' },
-  { to: '/identity', title: 'Marks & Lockups', desc: 'The mark, lockups, clearspace, minimum size.' },
-  { to: '/color', title: 'Color', desc: 'Grayscale base, brand and product accent lanes, semantic states.' },
+  { to: '/identity', title: 'Identity', desc: 'What Serialized is, why it exists, and what it stands for — plus voice and tone.' },
+  { to: '/logos', title: 'Logos', desc: 'The mark, lockups, clearspace, minimum size.' },
   { to: '/typography', title: 'Typography', desc: 'Fraunces, Satoshi, Roboto Mono — and when to use each.' },
+  { to: '/color', title: 'Color', desc: 'Grayscale base, brand and product accent lanes, semantic states.' },
   { to: '/sub-brands', title: 'Sub Brands', desc: 'Serialized.Audit — the product identity for SerializedAudit.io.' },
   { to: '/in-use', title: 'In Use', desc: 'The system applied — buttons, badges, cards, and data tables.' },
 ]
@@ -33,24 +33,22 @@ const MAP = [
 export function Introduction() {
   return (
     <div>
-      <SectionHero eyebrow="Brand Kit · Introduction" />
+      <SectionHero />
 
       <div className="page-body">
-        <h1 className="content__title">
-          The onchain intelligence layer for builders who can't afford to be wrong.
-        </h1>
-        <p className="content__lede">
-          Serialized is a B2B API platform that gives crypto builders an intelligence edge — read closed-source
-          contracts, get clean onchain data, and route transactions with precision, all through a single
-          platform. This is the monochromatic system built to carry that positioning: grayscale carries the
-          structure, color is reserved for meaning. Here's what keeps it recognizable, and where each part lives.
+        <p className="content__eyebrow">Brand Kit · Introduction</p>
+        <p className="intro-statement">
+          Serialized is the onchain intelligence layer for builders who can't afford to be wrong. Grayscale
+          carries the structure; color is reserved for meaning.
         </p>
 
         <div className="pillars">
           {PILLARS.map((pillar, i) => (
             <div className="pillar" key={pillar.title}>
-              <div className="pillar__index">0{i + 1}</div>
-              <h3 className="pillar__title">{pillar.title}</h3>
+              <div className="pillar__label">
+                <span className="pillar__label-index">0{i + 1}</span>
+                <span className="pillar__label-title">{pillar.title.toUpperCase()}</span>
+              </div>
               <p className="pillar__body">{pillar.body}</p>
             </div>
           ))}

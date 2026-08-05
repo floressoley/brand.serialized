@@ -16,13 +16,17 @@
 .card__title {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
-  font-size: 20px;
+  letter-spacing: var(--font-display-letter-spacing);
+  font-size: var(--text-subheadline-size);
+  line-height: 1.2;
   color: var(--color-text-primary);
   margin: 0;
 }
 
 .card__description {
   font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  letter-spacing: var(--font-body-letter-spacing);
   font-size: 14px;
   color: var(--color-text-secondary);
   margin: var(--space-1) 0 0;
@@ -30,5 +34,7 @@
 
 .card__body {
   font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  letter-spacing: var(--font-body-letter-spacing);
   color: var(--color-text-secondary);
 }

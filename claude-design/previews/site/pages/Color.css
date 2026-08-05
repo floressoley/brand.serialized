@@ -1,49 +1,53 @@
 .swatch-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: var(--space-4);
   margin-bottom: var(--space-12);
 }
 
 .swatch-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: none;
-  padding: 0;
+  height: 190px;
+  border-radius: 2px;
+  padding: var(--space-4);
   text-align: left;
   cursor: pointer;
-  transition: border-color 120ms ease;
+  transition: opacity 120ms ease;
 }
 
 .swatch-card:hover {
-  border-color: var(--color-border-strong);
-}
-
-.swatch-card__fill {
-  height: 72px;
-}
-
-.swatch-card__meta {
-  padding: var(--space-3);
+  opacity: 0.9;
 }
 
 .swatch-card__name {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--color-text-primary);
-  margin: 0 0 2px;
-}
-
-.swatch-card__hex {
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-muted);
-  margin: 0;
+  letter-spacing: var(--font-mono-letter-spacing);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0 0 var(--space-3);
 }
 
-.swatch-card__hex.swatch-card__hex--copied {
-  color: var(--color-accent-serialized);
+.swatch-card__specs {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2px var(--space-3);
+  margin: auto 0 0;
+}
+
+.swatch-card__specs dt {
+  font-family: var(--font-mono);
+  letter-spacing: var(--font-mono-letter-spacing);
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.swatch-card__specs dd {
+  font-family: var(--font-mono);
+  letter-spacing: var(--font-mono-letter-spacing);
+  font-size: 11px;
+  margin: 0;
 }

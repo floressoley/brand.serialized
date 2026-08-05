@@ -1,137 +1,197 @@
 import { SectionHero } from '../SectionHero'
 import './Typography.css'
 
+const PRIMARY_VARIANTS = [
+  {
+    role: 'Headlines',
+    name: 'Fraunces',
+    style: {
+      fontFamily: 'var(--font-display)',
+      fontVariationSettings: 'var(--font-display-large-settings)',
+      letterSpacing: 'var(--text-headline-large-tracking)',
+    },
+    alphabetStyle: {
+      fontFamily: 'var(--font-display)',
+      fontVariationSettings: 'var(--font-display-settings)',
+      letterSpacing: 'var(--font-display-letter-spacing)',
+    },
+  },
+  {
+    role: 'Body copy',
+    name: 'Satoshi',
+    style: { fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: 'var(--font-body-letter-spacing)' },
+    alphabetStyle: {
+      fontFamily: 'var(--font-body)',
+      fontWeight: 'var(--font-body-weight)',
+      letterSpacing: 'var(--font-body-letter-spacing)',
+    },
+  },
+]
+
+const SECONDARY_VARIANTS = [
+  {
+    role: 'Labels, data, code',
+    name: 'Roboto Mono',
+    style: {
+      fontFamily: 'var(--font-mono)',
+      letterSpacing: 'var(--font-mono-letter-spacing)',
+    },
+  },
+]
+
+const TYPE_SCALE = [
+  {
+    name: 'Display Large',
+    font: 'Fraunces (wght 300)',
+    tracking: '-2%',
+    lineHeight: '95%',
+    className: 'text-display-large',
+    sample: 'Big Headline',
+  },
+  {
+    name: 'Headline Large',
+    font: 'Fraunces (wght 300)',
+    tracking: '-2%',
+    lineHeight: '95%',
+    className: 'text-headline-large',
+    sample: 'Headline',
+  },
+  {
+    name: 'Headline',
+    font: 'Satoshi Medium',
+    tracking: '-1%',
+    lineHeight: '105%',
+    className: 'text-headline',
+    sample: 'Medium Headline',
+  },
+  {
+    name: 'Sub Headline',
+    font: 'Satoshi Medium',
+    tracking: '-1%',
+    lineHeight: '110%',
+    className: 'text-subheadline',
+    sample: 'Sub Headline',
+  },
+  {
+    name: 'Body',
+    font: 'Satoshi Regular',
+    tracking: '0.2px',
+    lineHeight: '110%',
+    className: 'text-body',
+    sample: 'Body copy',
+  },
+  {
+    name: 'Tertiary',
+    font: 'Roboto Mono Regular',
+    tracking: '2%',
+    lineHeight: '120%',
+    className: 'text-tertiary',
+    sample: 'SUBTITLE / SUBTITLE',
+  },
+]
+
 export function Typography() {
   return (
     <div>
-      <SectionHero eyebrow="Brand Kit · Typography" />
+      <SectionHero />
 
       <div className="page-body">
+      <p className="content__eyebrow">Brand Kit · Typography</p>
       <p className="content__lede">
-        A variable display serif, a workhorse sans, and a mono for data — each with a distinct job, no
-        overlap. Fraunces and Roboto Mono are sourced from Google Fonts; Satoshi from Fontshare.
+        Three fonts, three jobs — Fraunces for big moments, Satoshi for everything you read, Roboto Mono for
+        anything literal.
       </p>
 
-      <div className="section">
-        <div className="specimen">
-          <div className="specimen__meta">
-            <span className="specimen__name">Fraunces</span>
-            <span className="specimen__use">Headlines, titles — short text only</span>
+      <div className="font-showcase font-showcase--label-left" id="primary-fonts">
+        <div className="font-showcase__info">
+          <div className="font-showcase__label">
+            <span>Typography</span>
+            <span>Primary fonts</span>
           </div>
-          <div
-            className="specimen__display"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontVariationSettings: "'opsz' 38, 'wght' 360, 'SOFT' 17, 'WONK' 0.36",
-            }}
-          >
-            Trust, Precision
-          </div>
-          <div className="specimen__alphabet" style={{ fontFamily: 'var(--font-display)' }}>
-            AaBbCcDdEeFf 0123456789
-          </div>
-          <table className="axis-table">
-            <thead>
-              <tr>
-                <th>Axis</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Optical size (opsz)</td>
-                <td>38</td>
-              </tr>
-              <tr>
-                <td>Weight (wght)</td>
-                <td>360</td>
-              </tr>
-              <tr>
-                <td>Soft (SOFT)</td>
-                <td>17</td>
-              </tr>
-              <tr>
-                <td>Wonk (WONK)</td>
-                <td>0.36</td>
-              </tr>
-            </tbody>
-          </table>
-          <p style={{ marginTop: 'var(--space-4)' }}>
-            Not for body copy or long-form text — used sparingly, in short bursts, where the brand wants
-            warmth and editorial weight against an otherwise cold/precise system.
+          <p>
+            Fraunces and Satoshi are the primary typefaces for the Serialized brand. Fraunces carries
+            headlines and big statements; Satoshi carries everything you read.
+          </p>
+          <p style={{ marginTop: 'var(--space-6)' }}>
+            Use Fraunces for headlines only, never body copy. Use Satoshi Medium for smaller headline roles
+            and Regular for body copy — see Type usage below for the exact sizes.
           </p>
         </div>
+        <div className="font-showcase__content">
+          <div className="font-showcase__cards">
+            {PRIMARY_VARIANTS.map((v) => (
+              <div className="font-showcase__card" key={v.name}>
+                <span className="font-showcase__card-role">{v.role}</span>
+                <div className="font-showcase__card-name" style={v.style}>
+                  {v.name}
+                </div>
+                <div className="font-showcase__card-alphabet" style={v.alphabetStyle}>
+                  abcdefghijklmnopqrstuvwxyz
+                  <br />
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                  <br />
+                  0123456789
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-        <div className="specimen">
-          <div className="specimen__meta">
-            <span className="specimen__name">Satoshi</span>
-            <span className="specimen__use">Body, paragraphs, buttons, links</span>
+      <div className="font-showcase font-showcase--label-left font-showcase--no-divider" id="secondary-font">
+        <div className="font-showcase__info">
+          <div className="font-showcase__label">
+            <span>Typography</span>
+            <span>Secondary font</span>
           </div>
-          <div
-            className="specimen__display"
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontWeight: 'var(--font-body-weight)',
-              letterSpacing: 'var(--font-body-letter-spacing)',
-            }}
-          >
-            Trust, Precision
-          </div>
-          <div
-            className="specimen__alphabet"
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontWeight: 'var(--font-body-weight)',
-              letterSpacing: 'var(--font-body-letter-spacing)',
-            }}
-          >
-            AaBbCcDdEeFf 0123456789
-          </div>
-          <table className="axis-table">
-            <thead>
-              <tr>
-                <th>Property</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Weight</td>
-                <td>400 (Regular)</td>
-              </tr>
-              <tr>
-                <td>Size</td>
-                <td>16px</td>
-              </tr>
-              <tr>
-                <td>Letter-spacing</td>
-                <td>0.2px</td>
-              </tr>
-            </tbody>
-          </table>
-          <p style={{ marginTop: 'var(--space-4)' }}>
-            The default text face everywhere Fraunces isn't explicitly called for. Carries all
-            reading-length content. Rendered Regular with a touch of tracking — deliberate without going
-            quiet.
+          <p>
+            Roboto Mono is the secondary typeface for the Serialized brand. Anything literal goes here — data,
+            code, addresses, labels.
+          </p>
+          <p style={{ marginTop: 'var(--space-6)' }}>
+            Always use Regular weight, never bold or italic. It's how we show precision: numbers and values
+            presented exactly as they are, never styled for decoration.
           </p>
         </div>
+        <div className="font-showcase__content">
+          <div className="font-showcase__cards font-showcase__cards--single">
+            {SECONDARY_VARIANTS.map((v) => (
+              <div className="font-showcase__card" key={v.name}>
+                <span className="font-showcase__card-role">{v.role}</span>
+                <div className="font-showcase__card-name" style={v.style}>
+                  {v.name}
+                </div>
+                <div className="font-showcase__card-alphabet" style={v.style}>
+                  abcdefghijklmnopqrstuvwxyz
+                  <br />
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                  <br />
+                  0123456789
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-        <div className="specimen">
-          <div className="specimen__meta">
-            <span className="specimen__name">Roboto Mono</span>
-            <span className="specimen__use">Labels, data, code</span>
-          </div>
-          <div className="specimen__display" style={{ fontFamily: 'var(--font-mono)', fontSize: 40 }}>
-            0xA0b8...eB48
-          </div>
-          <div className="specimen__alphabet" style={{ fontFamily: 'var(--font-mono)' }}>
-            AaBbCcDdEeFf 0123456789
-          </div>
-          <p style={{ marginTop: 'var(--space-4)' }}>
-            Labels, data values, code, tabular/numeric content, decorative technical accents (hashes,
-            addresses, timestamps). This is the typeface doing the "Precision" work — reserved for literal
-            data/code, not stylistic emphasis on prose.
-          </p>
+      <div className="section" id="type-usage">
+        <h2>Type usage</h2>
+        <p style={{ marginBottom: 'var(--space-6)' }}>
+          Six sizes, each with its font, spacing, and line height already dialed in. Pick from this list
+          instead of choosing a one-off size.
+        </p>
+        <div className="type-scale">
+          {TYPE_SCALE.map((row) => (
+            <div className="type-scale__row" key={row.name}>
+              <div className="type-scale__meta">
+                <span className="type-scale__meta-name">{row.name}</span>
+                <span className="type-scale__meta-detail">{row.font}</span>
+                <span className="type-scale__meta-detail">Tracking {row.tracking}</span>
+                <span className="type-scale__meta-detail">Line height {row.lineHeight}</span>
+              </div>
+              <div className={`type-scale__sample ${row.className}`}>{row.sample}</div>
+            </div>
+          ))}
         </div>
       </div>
       </div>

@@ -10,8 +10,8 @@ Dark-mode-first, monochromatic base with two accent lanes and a semantic set. Ai
 | Surface | `#1F1F1F` | Cards, panels, raised surfaces |
 | Surface Subtle | `#1A1A19` | Slightly-raised panels, between Background and Surface |
 | Surface Strong | `#2C2C2A` | Elevated/hover surfaces, above Surface |
-| Border Default | `#3F3E3C` | Default dividers, input borders |
-| Border Strong | `#4F4F4F` | Emphasized borders, hover states |
+| Border Default | `#2A2A28` | Default dividers, input borders |
+| Border Strong | `#3A3938` | Emphasized borders, hover states |
 | Text Primary | `#F2F2F0` | Headlines, primary body text |
 | Text Secondary | `#9C9C99` | Secondary copy, descriptions |
 | Muted | `#6B6B68` | Placeholder text, disabled, captions |

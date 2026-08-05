@@ -6,6 +6,7 @@
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
+  letter-spacing: var(--font-body-letter-spacing);
   line-height: 1;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
