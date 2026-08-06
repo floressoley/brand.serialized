@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { InteractiveGrid } from '../../components/InteractiveGrid/InteractiveGrid'
 import serializedLogo from '../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg'
 import { BackToTop } from './BackToTop'
 import { NAV_SECTIONS } from './nav-config'
@@ -149,6 +150,9 @@ export function Layout() {
         </nav>
       </aside>
       <main className="content">
+        <div className="content-hero-bg">
+          <InteractiveGrid />
+        </div>
         <div className="content__inner content__inner--enter" key={location.pathname}>
           <Outlet />
         </div>

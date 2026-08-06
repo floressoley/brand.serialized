@@ -5,13 +5,6 @@
   overflow: hidden;
   margin: calc(-1 * var(--space-16)) calc(-1 * var(--space-16)) var(--space-16);
   width: calc(100% + var(--space-16) * 2);
-  background: var(--color-background);
-}
-
-.section-hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
 }
 
 .section-hero__content {
