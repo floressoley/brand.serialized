@@ -287,10 +287,23 @@
 }
 
 @media (max-width: 640px) {
-  .landing-header__nav {
+  .landing-header {
+    padding: var(--space-4) var(--space-4) 0;
+  }
+  .landing-header__pill {
     gap: var(--space-3);
+    padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  }
+  .landing-header__nav {
+    display: none;
+  }
+  .landing-header__cta {
+    margin-left: auto;
   }
   .landing-h1 {
     font-size: 36px;
+  }
+  .landing-statusbar {
+    padding: var(--space-3) var(--space-4);
   }
 }

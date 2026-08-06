@@ -29,18 +29,12 @@
   margin-bottom: var(--space-3);
 }
 
-.pillar__label-index {
-  font-family: var(--font-mono);
-  letter-spacing: var(--font-mono-label-tracking);
-  font-size: 13px;
-  color: var(--color-accent-serialized);
-}
-
 .pillar__label-title {
-  font-family: var(--font-mono);
-  letter-spacing: var(--font-mono-label-tracking);
-  font-size: 13px;
-  color: var(--color-accent-serialized);
+  font-family: var(--font-display);
+  font-variation-settings: var(--font-display-settings);
+  letter-spacing: var(--font-display-letter-spacing);
+  font-size: 24px;
+  color: var(--color-text-primary);
 }
 
 .pillar__body {
@@ -53,41 +47,12 @@
   margin: 0;
 }
 
-.map-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-4);
+.map-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
 }
 
-.map-card {
-  display: block;
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
+.map-links .btn {
   text-decoration: none;
-  transition: border-color 120ms ease, background-color 120ms ease;
-}
-
-.map-card:hover {
-  border-color: var(--color-border-strong);
-  background: var(--color-surface);
-}
-
-.map-card__title {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--font-body-size);
-  letter-spacing: var(--font-body-letter-spacing);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--space-1);
-}
-
-.map-card__desc {
-  font-family: var(--font-body);
-  font-weight: var(--font-body-weight);
-  font-size: var(--font-body-size);
-  line-height: var(--text-body-line-height);
-  letter-spacing: var(--font-body-letter-spacing);
-  color: var(--color-text-secondary);
-  margin: 0;
 }

@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
-import hatchTexture from '../../../../brand-kit/guidelines/imagery-inspo/hatch-texture.png'
-import hexDump from '../../../../brand-kit/guidelines/imagery-inspo/hex-dump-highlight.png'
+import { HexHero, InteractiveGrid } from '../../../components'
 import { SectionHero } from '../SectionHero'
 import './Identity.css'
 
@@ -48,11 +47,6 @@ const DIFFERENTIATION = [
 ]
 
 const VIBES = ['Austere', 'Engineered', 'Unhyped', 'Legible', 'Composed']
-
-const IMAGERY = [
-  { src: hexDump, caption: 'Hex/data dumps — tokens syntax-highlighted against muted mono text' },
-  { src: hatchTexture, caption: 'Diagonal line-hatch — near-invisible directional background texture' },
-]
 
 const PROMISES = [
   "We'll never dress up a probability as a certainty.",
@@ -207,12 +201,18 @@ export function Identity() {
               ))}
             </div>
             <div className="identity-imagery">
-              {IMAGERY.map((item) => (
-                <div className="identity-imagery__card" key={item.caption}>
-                  <img src={item.src} alt={item.caption} />
-                  <div className="identity-imagery__caption">{item.caption}</div>
+              <div className="identity-imagery__card">
+                <div className="identity-imagery__effect">
+                  <HexHero pace="calm" />
                 </div>
-              ))}
+                <div className="identity-imagery__caption">Hex/data dumps — tokens syntax-highlighted against muted mono text</div>
+              </div>
+              <div className="identity-imagery__card">
+                <div className="identity-imagery__effect">
+                  <InteractiveGrid dotDistance={14} lineLength={9} lineWidth={1} minProximity={90} />
+                </div>
+                <div className="identity-imagery__caption">Diagonal line-hatch — near-invisible directional background texture</div>
+              </div>
             </div>
           </Row>
 

@@ -229,11 +229,10 @@
   overflow: hidden;
 }
 
-.identity-imagery__card img {
-  display: block;
+.identity-imagery__effect {
+  position: relative;
   width: 100%;
   height: 140px;
-  object-fit: cover;
   background: var(--color-surface);
 }
 

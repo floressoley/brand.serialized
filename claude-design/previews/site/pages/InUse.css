@@ -6,6 +6,16 @@
   margin-bottom: var(--space-4);
 }
 
+.preview__caption {
+  font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  font-size: 13px;
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--font-body-letter-spacing);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
 .preview__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

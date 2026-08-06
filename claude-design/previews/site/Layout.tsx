@@ -19,14 +19,32 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
   )
 }
 
+function MenuIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M4 4L14 14M14 4L4 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 export function Layout() {
   const location = useLocation()
   const [openPath, setOpenPath] = useState<string | null>(
     NAV_SECTIONS.find((s) => s.children && s.path !== '/' && location.pathname.startsWith(s.path))?.path ?? null,
   )
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    setMobileNavOpen(false)
   }, [location.pathname])
 
   useEffect(() => {
@@ -35,13 +53,46 @@ export function Layout() {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [location.pathname, location.hash])
 
+  useEffect(() => {
+    document.body.style.overflow = mobileNavOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileNavOpen])
+
   return (
     <div className="site">
-      <aside className="sidebar">
-        <a href="/" className="sidebar__brand">
+      <header className="mobile-topbar">
+        <a href="/" className="mobile-topbar__brand">
           <img src={serializedLogo} alt="Serialized" />
         </a>
-        <div className="sidebar__label">Brand</div>
+        <button
+          type="button"
+          className="mobile-topbar__toggle"
+          aria-label="Open navigation"
+          aria-expanded={mobileNavOpen}
+          onClick={() => setMobileNavOpen(true)}
+        >
+          <MenuIcon />
+        </button>
+      </header>
+
+      {mobileNavOpen && <div className="sidebar-overlay" onClick={() => setMobileNavOpen(false)} />}
+
+      <aside className={`sidebar${mobileNavOpen ? ' sidebar--open' : ''}`}>
+        <div className="sidebar__header">
+          <a href="/" className="sidebar__brand">
+            <img src={serializedLogo} alt="Serialized" />
+          </a>
+          <button
+            type="button"
+            className="sidebar__close"
+            aria-label="Close navigation"
+            onClick={() => setMobileNavOpen(false)}
+          >
+            <CloseIcon />
+          </button>
+        </div>
         <nav>
           <ul className="sidebar__nav">
             {NAV_SECTIONS.map((section) => {

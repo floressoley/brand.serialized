@@ -10,6 +10,7 @@ import { Logos } from './site/pages/Logos'
 import { Color } from './site/pages/Color'
 import { Typography } from './site/pages/Typography'
 import { Foundations } from './site/pages/Foundations'
+import { Icons } from './site/pages/Icons'
 import { DesignSystem } from './site/pages/DesignSystem'
 import { SubBrands } from './site/pages/SubBrands'
 import { MediaKit } from './site/pages/MediaKit'
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="color" element={<Color />} />
           <Route path="typography" element={<Typography />} />
           <Route path="foundations" element={<Foundations />} />
+          <Route path="icons" element={<Icons />} />
           <Route path="design-system" element={<DesignSystem />} />
           <Route path="sub-brands" element={<SubBrands />} />
           <Route path="media-kit" element={<MediaKit />} />

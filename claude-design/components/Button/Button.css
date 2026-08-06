@@ -12,7 +12,8 @@
   border: 1px solid transparent;
   padding: var(--space-3) var(--space-4);
   cursor: pointer;
-  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease,
+    border-radius 80ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:disabled {
@@ -40,10 +41,12 @@
 .btn--primary {
   background: var(--color-text-primary);
   color: var(--color-background);
+  border-radius: 999px;
 }
 
 .btn--primary:hover:not(:disabled) {
   background: var(--color-text-secondary);
+  border-radius: 8px;
 }
 
 /* Variant: secondary — outlined, medium emphasis */
@@ -51,11 +54,13 @@
   background: transparent;
   border-color: var(--color-border-strong);
   color: var(--color-text-primary);
+  border-radius: 999px;
 }
 
 .btn--secondary:hover:not(:disabled) {
   background: var(--color-surface);
   border-color: var(--color-text-secondary);
+  border-radius: 8px;
 }
 
 /* Variant: ghost — no border, lowest emphasis */
@@ -66,7 +71,6 @@
 }
 
 .btn--ghost:hover:not(:disabled) {
-  background: var(--color-surface);
   color: var(--color-accent-serialized);
 }
 

@@ -3,18 +3,21 @@
  * point at the cursor (same idea as MagnetLines), eased toward its target
  * angle every frame rather than snapping. Before the cursor ever enters the
  * grid, every line sits at a static baseAngle instead of pointing at some
- * arbitrary spot — defaulted to -67.5deg to match the logomark's "//" slash
+ * arbitrary spot — defaulted to -68deg to match the logomark's "//" slash
  * tilt (measured directly off serialized-logomark-on-dark.svg's bar
- * vertices via atan2, ~67.6deg off horizontal). Note this component's
+ * vertices via atan2, ~68.06deg off horizontal — rechecked after the
+ * 2026-08-06 logomark thickening, which widened the mark slightly and
+ * shifted the angle ~0.5deg from the prior ~67.53deg). Note this component's
  * baseAngle is measured from horizontal (0deg = flat), NOT the same
  * convention as MagnetLines' baseAngle, which rotates a vertical bar via
  * CSS `rotate()` and so is measured from vertical — a MagnetLines angle of
  * -10 is nowhere near a -10 here; they don't carry over 1:1.
  *
  * Proximity to the cursor no longer cycles hue — every line is our single
- * accent color — proximity instead only scales brightness/opacity: lines
- * near the cursor render at full accent intensity, lines further away fade
- * toward a dim neutral tone.
+ * accent color — proximity instead smoothstep-interpolates each line's RGB
+ * from the dim neutral tone to the full accent color, so the highlighted
+ * area reads as a soft gradient falloff rather than a hard-edged circle at
+ * the minProximity boundary.
  *
  * Grid points and their current angle live in flat arrays (not per-point
  * objects/closures) rebuilt only on resize, so the per-frame cost is just
@@ -38,11 +41,11 @@ export function InteractiveGrid({
   dotDistance = 18,
   lineLength = 12,
   lineWidth = 1.4,
-  minProximity = 200,
+  minProximity = 150,
   accentColor = 'var(--color-accent-serialized)',
   dimColor = 'var(--color-border-strong)',
   ease = 0.15,
-  baseAngle = -67.5,
+  baseAngle = -68,
 }: InteractiveGridProps) {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -63,8 +66,9 @@ export function InteractiveGrid({
       return computed
     }
     const accentRgb = resolveColor(accentColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/)
-    const [ar, ag, ab] = accentRgb ? [accentRgb[1], accentRgb[2], accentRgb[3]] : ['126', '171', '245']
-    const resolvedDim = resolveColor(dimColor)
+    const [ar, ag, ab] = accentRgb ? accentRgb.slice(1, 4).map(Number) : [126, 171, 245]
+    const dimRgb = resolveColor(dimColor).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/)
+    const [dr, dg, db] = dimRgb ? dimRgb.slice(1, 4).map(Number) : [80, 80, 80]
 
     const baseAngleRad = (baseAngle * Math.PI) / 180
 
@@ -75,7 +79,12 @@ export function InteractiveGrid({
     let h = 0
     const mouse = { x: 0, y: 0 }
     let hasPointer = false
-    const minProxSquared = minProximity * minProximity
+    // Falloff spans from full accent at innerRadius out to fully dim at
+    // outerRadius — a wider outer band than minProximity so the gradient
+    // tapers gradually into the background instead of ending at a fixed
+    // radius.
+    const innerRadius = minProximity * 0.35
+    const outerRadius = minProximity * 2.2
 
     function buildGrid() {
       const cols = Math.ceil(w / dotDistance) + 1
@@ -130,7 +139,7 @@ export function InteractiveGrid({
         const y = pointsY[i]
         const dX = x - mouse.x
         const dY = y - mouse.y
-        const distSquared = dX * dX + dY * dY
+        const dist = Math.sqrt(dX * dX + dY * dY)
 
         const target = hasPointer ? Math.atan2(-dY, -dX) : baseAngleRad
         let diff = target - angles[i]
@@ -138,9 +147,12 @@ export function InteractiveGrid({
         while (diff < -Math.PI) diff += Math.PI * 2
         angles[i] += diff * ease
 
-        const near = hasPointer && distSquared <= minProxSquared
-        const alpha = near ? 0.35 + (1 - distSquared / minProxSquared) * 0.65 : 0.35
-        ctx.strokeStyle = near ? `rgba(${ar}, ${ag}, ${ab}, ${alpha})` : resolvedDim
+        const t = hasPointer ? Math.max(0, Math.min(1, (outerRadius - dist) / (outerRadius - innerRadius))) : 0
+        const st = t * t * (3 - 2 * t) // smoothstep — gradient falloff, no hard-edged circle
+        const r = dr + (ar - dr) * st
+        const g = dg + (ag - dg) * st
+        const b = db + (ab - db) * st
+        ctx.strokeStyle = `rgb(${r}, ${g}, ${b})`
 
         const dx = Math.cos(angles[i]) * half
         const dy = Math.sin(angles[i]) * half

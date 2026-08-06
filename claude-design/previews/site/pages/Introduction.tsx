@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { SectionHero } from '../SectionHero'
+import '../../../components/Button/Button.css'
 import './Introduction.css'
 
 const PILLARS = [
@@ -22,12 +23,12 @@ const PILLARS = [
 ]
 
 const MAP = [
-  { to: '/identity', title: 'Identity', desc: 'What Serialized is, why it exists, and what it stands for — plus voice and tone.' },
-  { to: '/logos', title: 'Logos', desc: 'The mark, lockups, clearspace, minimum size.' },
-  { to: '/typography', title: 'Typography', desc: 'Fraunces, Satoshi, Roboto Mono — and when to use each.' },
-  { to: '/color', title: 'Color', desc: 'Grayscale base, brand and product accent lanes, semantic states.' },
-  { to: '/sub-brands', title: 'Sub Brands', desc: 'Serialized.Audit — the product identity for SerializedAudit.io.' },
-  { to: '/in-use', title: 'In Use', desc: 'The system applied — buttons, badges, cards, and data tables.' },
+  { to: '/identity', title: 'Identity' },
+  { to: '/logos', title: 'Logos' },
+  { to: '/typography', title: 'Typography' },
+  { to: '/color', title: 'Color' },
+  { to: '/sub-brands', title: 'Sub Brands' },
+  { to: '/in-use', title: 'In Use' },
 ]
 
 export function Introduction() {
@@ -43,11 +44,10 @@ export function Introduction() {
         </p>
 
         <div className="pillars">
-          {PILLARS.map((pillar, i) => (
+          {PILLARS.map((pillar) => (
             <div className="pillar" key={pillar.title}>
               <div className="pillar__label">
-                <span className="pillar__label-index">0{i + 1}</span>
-                <span className="pillar__label-title">{pillar.title.toUpperCase()}</span>
+                <span className="pillar__label-title">{pillar.title}</span>
               </div>
               <p className="pillar__body">{pillar.body}</p>
             </div>
@@ -56,11 +56,10 @@ export function Introduction() {
 
         <div className="section">
           <h2>In this kit</h2>
-          <div className="map-grid">
+          <div className="map-links">
             {MAP.map((item) => (
-              <Link className="map-card" to={item.to} key={item.to}>
-                <p className="map-card__title">{item.title}</p>
-                <p className="map-card__desc">{item.desc}</p>
+              <Link className="btn btn--secondary" to={item.to} key={item.to}>
+                {item.title}
               </Link>
             ))}
           </div>

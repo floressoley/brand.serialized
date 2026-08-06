@@ -1,5 +1,5 @@
 import auditLogoOnDark from '../../../../brand-kit/logo/audit/audit-horizontal-on-dark.svg'
-import { Badge, Button, Card, Nav, Table } from '../../../components'
+import { Badge, Button, Card, Nav, ShinyButton, Table } from '../../../components'
 import { SectionHero } from '../SectionHero'
 import './InUse.css'
 
@@ -101,6 +101,10 @@ export function InUse() {
           <Button size="lg">Large</Button>
           <Button disabled>Disabled</Button>
         </div>
+        <div className="preview__row">
+          <ShinyButton>Get API Key</ShinyButton>
+        </div>
+        <p className="preview__caption">ShinyButton — the landing page's special CTA. Reserve it for the landing hero; use the standard Button elsewhere.</p>
       </div>
 
       <div className="section" id="badge">

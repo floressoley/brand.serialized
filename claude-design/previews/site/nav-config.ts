@@ -70,6 +70,14 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'texture', label: 'Texture' },
     ],
   },
+  {
+    path: '/icons',
+    label: 'Icons',
+    children: [
+      { id: 'weights', label: 'Weights' },
+      { id: 'set', label: 'Set' },
+    ],
+  },
   { path: '/sub-brands', label: 'Sub Brands' },
   { path: '/media-kit', label: 'Media Kit' },
   {

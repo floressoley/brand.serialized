@@ -1,5 +1,4 @@
-import clearspaceOnDark from '../../../../brand-kit/logo/serialized/serialized-clearspace-on-dark.svg'
-import clearspaceOnLight from '../../../../brand-kit/logo/serialized/serialized-clearspace-on-light.svg'
+import clearspace from '../../../../brand-kit/logo/serialized/serialized-clearspace.svg'
 import horizontalOnDark from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg'
 import horizontalOnDarkRaw from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg?raw'
 import horizontalOnLight from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-light.svg'
@@ -133,12 +132,7 @@ export function Logos() {
         </div>
         <div className="logo-showcase__content">
           <div className="logo-showcase__preview">
-            <span className="logo-showcase__tag">On dark</span>
-            <img src={clearspaceOnDark} alt="Serialized logo clearspace grid, on dark" className="clearspace-diagram__img clearspace-diagram__img--dark" />
-          </div>
-          <div className="logo-showcase__preview">
-            <span className="logo-showcase__tag">On white</span>
-            <img src={clearspaceOnLight} alt="Serialized logo clearspace grid, on light" className="clearspace-diagram__img clearspace-diagram__img--light" />
+            <img src={clearspace} alt="Serialized logo clearspace grid" className="clearspace-diagram__img clearspace-diagram__img--dark" />
           </div>
           <table className="spec-table">
             <thead>
