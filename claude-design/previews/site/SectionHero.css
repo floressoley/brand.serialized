@@ -8,6 +8,12 @@
   background: var(--color-background);
 }
 
+.section-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .section-hero__content {
   position: absolute;
   z-index: 1;

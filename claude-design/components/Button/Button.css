@@ -5,7 +5,7 @@
   gap: var(--space-2);
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: var(--font-body-letter-spacing);
   line-height: 1;
   border-radius: var(--radius-md);
@@ -62,11 +62,12 @@
 .btn--ghost {
   background: transparent;
   color: var(--color-text-secondary);
+  font-size: 16px;
 }
 
 .btn--ghost:hover:not(:disabled) {
   background: var(--color-surface);
-  color: var(--color-text-primary);
+  color: var(--color-accent-serialized);
 }
 
 /* Tone: audit — for SerializedAudit.io product surfaces only */

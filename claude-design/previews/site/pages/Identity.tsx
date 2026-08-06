@@ -67,6 +67,11 @@ const VOICE_RULES = [
   'Never editorialize a risk score. Report the number and the reasoning, not a verdict dressed as opinion.',
 ]
 
+const VOICE_EXAMPLES = [
+  { dont: 'Revolutionary AI-powered contract analysis!', do: 'Decompiles unverified bytecode into readable, auditable source.' },
+  { dont: 'Blazing-fast results, every time.', do: 'Median decompile: 1.8s.' },
+]
+
 interface RowProps {
   index: string
   label: string
@@ -232,6 +237,30 @@ export function Identity() {
                 <li key={r}>{r}</li>
               ))}
             </ul>
+            <table className="spec-table" style={{ marginTop: 'var(--space-6)' }}>
+              <thead>
+                <tr>
+                  <th>Don't</th>
+                  <th>Do</th>
+                </tr>
+              </thead>
+              <tbody>
+                {VOICE_EXAMPLES.map((ex) => (
+                  <tr key={ex.dont}>
+                    <td>{ex.dont}</td>
+                    <td>{ex.do}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p style={{ marginTop: 'var(--space-4)' }}>
+              For naming conventions ("Serialized" capitalization, "SerializedAudit.io" vs. "Audit") and
+              copy-paste boilerplate, see{' '}
+              <a href="/media-kit#boilerplate" style={{ color: 'var(--color-accent-serialized)' }}>
+                Media Kit
+              </a>
+              .
+            </p>
           </Row>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { MagnetLines } from '../../components/MagnetLines/MagnetLines'
+import { InteractiveGrid } from '../../components/InteractiveGrid/InteractiveGrid'
 import './SectionHero.css'
 
 export interface SectionHeroProps {
@@ -8,7 +8,9 @@ export interface SectionHeroProps {
 export function SectionHero({ eyebrow }: SectionHeroProps) {
   return (
     <div className="section-hero">
-      <MagnetLines />
+      <div className="section-hero__bg">
+        <InteractiveGrid />
+      </div>
       {eyebrow && (
         <div className="section-hero__content">
           <p className="section-hero__eyebrow">{eyebrow}</p>

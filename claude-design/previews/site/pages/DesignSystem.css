@@ -1,0 +1,112 @@
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 14px;
+  margin-bottom: var(--space-4);
+}
+
+.spec-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: var(--font-mono-label-tracking);
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: var(--space-2) var(--space-4) var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.spec-table td {
+  font-family: var(--font-body);
+  padding: var(--space-3) var(--space-4) var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border-default);
+  color: var(--color-text-secondary);
+  vertical-align: top;
+}
+
+.spec-table td:first-child {
+  color: var(--color-text-primary);
+}
+
+.spec-table code {
+  font-size: 12px;
+}
+
+.design-system__subhead {
+  font-family: var(--font-display);
+  font-variation-settings: var(--font-display-settings);
+  letter-spacing: var(--font-display-letter-spacing);
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-3);
+}
+
+.design-system__component-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.design-system__component-head .design-system__subhead {
+  margin: 0;
+}
+
+.design-system__component-head code {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.token-table td:nth-child(3) {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: var(--font-mono-letter-spacing);
+}
+
+.token-var {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: var(--font-mono-letter-spacing);
+  color: var(--color-accent-serialized);
+  background: var(--color-accent-serialized-bg);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 3px var(--space-2);
+  cursor: pointer;
+  transition: opacity var(--duration-hover) var(--easing-standard);
+}
+
+.token-var:hover {
+  opacity: 0.8;
+}
+
+.component-preview {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-subtle);
+  padding: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.component-preview__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.component-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.component-preview__frame {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}

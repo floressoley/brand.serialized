@@ -1,16 +1,20 @@
 /**
- * MagnetLines — a grid of thin bars that rotate to point at the cursor,
- * easing back on pointerleave. Pure DOM/CSS, no canvas.
+ * MagnetLines — a grid of thin bars that rotate to point at the cursor.
+ * Faithful port of Sasha's reference implementation (serialized-sided
+ * custom element `magnet-lines`): each bar's rotation is computed in JS on
+ * every window `pointermove`, from that bar's own getBoundingClientRect()
+ * center to the pointer, via `acos` (not `atan2` + CSS custom properties —
+ * that was our own later optimization, not what the reference does).
  *
- * Perf note: bar centers are computed once (mount + resize) from the grid
- * math, not read from the DOM per frame — interleaving getBoundingClientRect
- * reads with style writes across 1,200 elements forces a synchronous layout
- * on every element, every frame, which is what makes the effect stutter or
- * appear frozen. Pointermove only reads the container's rect once, then
- * writes transforms in a single pass.
+ * Rotation is unwrapped (kept within +/-180 deg of the bar's previous angle)
+ * so a bar never spins the long way round mid-transition, and each bar
+ * eases toward its target with a CSS transition rather than snapping.
+ * On mount, all bars seed toward an anchor point off toward the hero
+ * content so the grid starts "pointing" somewhere meaningful instead of at
+ * whatever the base angle happens to be.
  *
  * Usage:
- *   <div style={{ position: 'relative', height: '100vh' }}>
+ *   <div style={{ position: 'relative', height: '100%' }}>
  *     <MagnetLines />
  *   </div>
  */
@@ -28,99 +32,59 @@ export interface MagnetLinesProps {
 }
 
 export function MagnetLines({
-  rows = 40,
-  columns = 30,
-  lineColor = '#2C2C2A',
+  rows = 18,
+  columns = 13,
+  lineColor = 'var(--color-border-strong)',
   lineWidth = '1.4px',
   lineHeight = '17px',
-  baseAngle = 15,
+  baseAngle = -10,
 }: MagnetLinesProps) {
   const containerRef = useRef<HTMLDivElement | null>(null)
-  const spansRef = useRef<HTMLSpanElement[]>([])
-  const centersRef = useRef<{ cx: number; cy: number }[]>([])
-  const pointerRef = useRef<{ x: number; y: number } | null>(null)
-  const rafRef = useRef(0)
+  const itemsRef = useRef<(HTMLSpanElement & { _prev?: number })[]>([])
 
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
 
-    function recomputeCenters() {
-      const el = containerRef.current
-      if (!el) return
-      const { width, height } = el.getBoundingClientRect()
-      const cellW = width / columns
-      const cellH = height / rows
-      const centers: { cx: number; cy: number }[] = []
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < columns; col++) {
-          centers.push({ cx: (col + 0.5) * cellW, cy: (row + 0.5) * cellH })
-        }
+    const items = itemsRef.current
+    items.forEach((item) => {
+      item._prev = baseAngle
+    })
+
+    function onMove(pointer: { clientX: number; clientY: number }) {
+      for (const item of items) {
+        const rect = item.getBoundingClientRect()
+        const centerX = rect.x + rect.width / 2
+        const centerY = rect.y + rect.height / 2
+        const b = pointer.clientX - centerX
+        const a = pointer.clientY - centerY
+        const c = Math.sqrt(a * a + b * b) || 1
+        const r = ((Math.acos(b / c) * 180) / Math.PI) * (pointer.clientY > centerY ? 1 : -1)
+
+        const prev = item._prev ?? baseAngle
+        let delta = r - (prev % 360)
+        if (delta > 180) delta -= 360
+        else if (delta < -180) delta += 360
+        item._prev = prev + delta
+        item.style.setProperty('--rotate', `${item._prev}deg`)
       }
-      centersRef.current = centers
     }
 
-    function applyRotations() {
-      const pointer = pointerRef.current
-      const centers = centersRef.current
-      const spans = spansRef.current
+    window.addEventListener('pointermove', onMove, { passive: true })
 
-      for (let i = 0; i < spans.length; i++) {
-        const span = spans[i]
-        const center = centers[i]
-        if (!span || !center) continue
-
-        let angleDeg = baseAngle
-        if (pointer) {
-          const dx = pointer.x - center.cx
-          const dy = pointer.y - center.cy
-          angleDeg = (Math.atan2(dy, dx) * 180) / Math.PI + 90
-        }
-
-        span.style.transform = `rotate(${angleDeg}deg)`
-      }
-
-      rafRef.current = 0
-    }
-
-    function scheduleUpdate() {
-      if (rafRef.current) return
-      rafRef.current = requestAnimationFrame(applyRotations)
-    }
-
-    function handlePointerMove(event: PointerEvent) {
-      const rect = container!.getBoundingClientRect()
-      pointerRef.current = { x: event.clientX - rect.left, y: event.clientY - rect.top }
-      scheduleUpdate()
-    }
-
-    function handlePointerLeave() {
-      pointerRef.current = null
-      scheduleUpdate()
-    }
-
-    function handleResize() {
-      recomputeCenters()
-      scheduleUpdate()
-    }
-
-    recomputeCenters()
-    scheduleUpdate()
-
-    container.addEventListener('pointermove', handlePointerMove)
-    container.addEventListener('pointerleave', handlePointerLeave)
-    window.addEventListener('resize', handleResize)
+    const raf = requestAnimationFrame(() => {
+      const rect = container.getBoundingClientRect()
+      onMove({
+        clientX: rect.left - rect.width * 0.35,
+        clientY: rect.top + rect.height * 0.55,
+      })
+    })
 
     return () => {
-      container.removeEventListener('pointermove', handlePointerMove)
-      container.removeEventListener('pointerleave', handlePointerLeave)
-      window.removeEventListener('resize', handleResize)
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current)
-        rafRef.current = 0
-      }
+      window.removeEventListener('pointermove', onMove)
+      cancelAnimationFrame(raf)
     }
-  }, [rows, columns, baseAngle])
+  }, [baseAngle])
 
   const total = rows * columns
 
@@ -128,38 +92,30 @@ export function MagnetLines({
     <div
       ref={containerRef}
       className="magnet-lines"
-      style={{
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gridTemplateRows: `repeat(${rows}, 1fr)`,
-      }}
+      style={
+        {
+          gridTemplateColumns: `repeat(${columns}, 1fr)`,
+          gridTemplateRows: `repeat(${rows}, 1fr)`,
+        } as CSSProperties
+      }
     >
-      {Array.from({ length: total }, (_, i) => {
-        const row = Math.floor(i / columns)
-        const col = i % columns
-        const dRow = row / rows - 0.5
-        const dCol = col / columns - 0.5
-        const distance = Math.sqrt(dRow * dRow + dCol * dCol)
-        const delayMs = Math.round(distance * 420)
-
-        return (
-          <span
-            key={i}
-            ref={(el) => {
-              if (el) spansRef.current[i] = el
-            }}
-            className="magnet-lines__bar"
-            style={
-              {
-                width: lineWidth,
-                height: lineHeight,
-                background: lineColor,
-                transform: `rotate(${baseAngle}deg)`,
-                '--enter-delay': `${delayMs}ms`,
-              } as CSSProperties
-            }
-          />
-        )
-      })}
+      {Array.from({ length: total }, (_, i) => (
+        <span
+          key={i}
+          ref={(el) => {
+            if (el) itemsRef.current[i] = el
+          }}
+          className="magnet-lines__bar"
+          style={
+            {
+              width: lineWidth,
+              height: lineHeight,
+              background: lineColor,
+              '--rotate': `${baseAngle}deg`,
+            } as CSSProperties
+          }
+        />
+      ))}
     </div>
   )
 }

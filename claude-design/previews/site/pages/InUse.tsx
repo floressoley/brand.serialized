@@ -21,7 +21,7 @@ export function InUse() {
         claude-design/components, built on the tokens documented in this kit.
       </p>
 
-      <div className="section">
+      <div className="section" id="scan-page">
         <h2>SerializedAudit.io scan page</h2>
         <div className="app-frame">
           <Nav
@@ -80,7 +80,7 @@ export function InUse() {
         </div>
       </div>
 
-      <div className="section">
+      <div className="section" id="button">
         <h2>Button</h2>
         <div className="preview__row">
           <Button variant="primary">Primary</Button>
@@ -103,7 +103,7 @@ export function InUse() {
         </div>
       </div>
 
-      <div className="section">
+      <div className="section" id="badge">
         <h2>Badge</h2>
         <div className="preview__row">
           <Badge tone="neutral">Neutral</Badge>
@@ -120,6 +120,74 @@ export function InUse() {
             Info
           </Badge>
         </div>
+      </div>
+
+      <div className="section" id="cards">
+        <h2>Cards</h2>
+        <div className="preview__grid">
+          <Card title="Contract decompiled" description="Closed-source bytecode, made readable">
+            <Badge tone="pass" dot>
+              Verified
+            </Badge>
+          </Card>
+          <Card title="Upgrade path open" description="Proxy contract, owner-controlled" action={<Badge tone="warning">Review</Badge>}>
+            Implementation can change without a token holder vote.
+          </Card>
+          <Card title="Unbounded mint" description="No supply cap found" action={<Badge tone="error">High risk</Badge>}>
+            Owner can mint additional supply at any time.
+          </Card>
+        </div>
+      </div>
+
+      <div className="section" id="table">
+        <h2>Data table</h2>
+        <Table>
+          <Table.Head>
+            <Table.Row>
+              <th>Token</th>
+              <th>Address</th>
+              <th>Risk</th>
+              <th>Score</th>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            {auditRows.map((row) => (
+              <Table.Row key={row.address}>
+                <Table.Cell>{row.token}</Table.Cell>
+                <Table.Cell mono>{row.address}</Table.Cell>
+                <Table.Cell>
+                  <Badge tone={row.risk} dot>
+                    {row.riskLabel}
+                  </Badge>
+                </Table.Cell>
+                <Table.Cell mono>{row.score}</Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </div>
+
+      <div className="section" id="navigation">
+        <h2>Navigation</h2>
+        <div className="app-frame">
+          <Nav
+            brand={<img src={auditLogoOnDark} alt="Serialized Audit" style={{ height: 22 }} />}
+            links={[
+              { label: 'Scan', href: '#scan', active: true },
+              { label: 'Reports', href: '#reports' },
+              { label: 'Docs', href: '#docs' },
+            ]}
+            actions={
+              <Button tone="audit" size="sm">
+                Connect wallet
+              </Button>
+            }
+          />
+        </div>
+        <p style={{ marginTop: 'var(--space-4)' }}>
+          Brand and product logo lockups both work in the nav slot — swap the <code>brand</code> prop for the
+          Serialized wordmark on marketing pages, or the Audit lockup on product surfaces.
+        </p>
       </div>
       </div>
     </div>

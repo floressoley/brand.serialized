@@ -94,12 +94,10 @@
   color: var(--color-muted);
   cursor: pointer;
   border-radius: var(--radius-md);
-  transition: color 120ms ease, background-color 120ms ease;
 }
 
-.sidebar__toggle:hover {
+.sidebar__row:hover .sidebar__toggle {
   color: var(--color-text-primary);
-  background: var(--color-border-default);
 }
 
 .sidebar__chevron {

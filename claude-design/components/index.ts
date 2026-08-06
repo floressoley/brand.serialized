@@ -15,3 +15,21 @@ export type { NavProps, NavLinkItem } from './Nav/Nav'
 
 export { MagnetLines } from './MagnetLines/MagnetLines'
 export type { MagnetLinesProps } from './MagnetLines/MagnetLines'
+
+export { AsciiTrail } from './AsciiTrail/AsciiTrail'
+export type { AsciiTrailProps } from './AsciiTrail/AsciiTrail'
+
+export { HexHero } from './HexHero/HexHero'
+export type { HexHeroProps } from './HexHero/HexHero'
+
+export { InteractiveGrid } from './InteractiveGrid/InteractiveGrid'
+export type { InteractiveGridProps } from './InteractiveGrid/InteractiveGrid'
+
+export { ShinyButton } from './ShinyButton/ShinyButton'
+export type { ShinyButtonProps } from './ShinyButton/ShinyButton'
+
+export { AnimatedWord } from './AnimatedWord/AnimatedWord'
+export type { AnimatedWordProps } from './AnimatedWord/AnimatedWord'
+
+export { DecodeText } from './DecodeText/DecodeText'
+export type { DecodeTextProps } from './DecodeText/DecodeText'

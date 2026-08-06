@@ -323,6 +323,16 @@ export function Logos() {
               <img src={fullLogoOutline} alt="Full logo with an outline stroke — incorrect" style={{ height: '34px', width: 'auto' }} />
             </div>
           </div>
+          <div className="misuse-card">
+            <div className="misuse-card__header">
+              <span className="misuse-card__icon">✕</span>
+              <p className="misuse-card__caption">Place the mark on an accent color or other low-contrast field.</p>
+            </div>
+            <div className="misuse-card__stage" style={{ background: 'var(--color-accent-serialized)' }}>
+              <img src={markOnDark} alt="Logomark placed on an accent-color background — incorrect" style={{ height: '80px', width: 'auto' }} />
+              <span className="misuse-card__ghost-note">↑ low contrast against the accent field</span>
+            </div>
+          </div>
         </div>
       </div>
 

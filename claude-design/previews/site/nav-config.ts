@@ -60,6 +60,41 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'usage-rules', label: 'Usage rules' },
     ],
   },
+  {
+    path: '/foundations',
+    label: 'Foundations',
+    children: [
+      { id: 'elevation', label: 'Elevation' },
+      { id: 'rhythm', label: 'Rhythm' },
+      { id: 'motion', label: 'Motion' },
+      { id: 'texture', label: 'Texture' },
+    ],
+  },
   { path: '/sub-brands', label: 'Sub Brands' },
-  { path: '/in-use', label: 'In Use' },
+  { path: '/media-kit', label: 'Media Kit' },
+  {
+    path: '/in-use',
+    label: 'In Use',
+    children: [
+      { id: 'scan-page', label: 'Scan page' },
+      { id: 'button', label: 'Button' },
+      { id: 'badge', label: 'Badge' },
+      { id: 'cards', label: 'Cards' },
+      { id: 'table', label: 'Table' },
+      { id: 'navigation', label: 'Navigation' },
+    ],
+  },
+  {
+    path: '/design-system',
+    label: 'Design System',
+    children: [
+      { id: 'colors', label: 'Colors' },
+      { id: 'typography-tokens', label: 'Typography' },
+      { id: 'spacing-radius', label: 'Spacing & radius' },
+      { id: 'motion-tokens', label: 'Motion' },
+      { id: 'shadow-focus', label: 'Shadow & focus' },
+      { id: 'elevation-ref', label: 'Elevation' },
+      { id: 'components', label: 'Components' },
+    ],
+  },
 ]

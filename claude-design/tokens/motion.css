@@ -1,0 +1,9 @@
+/* Two speeds: quick for direct-manipulation feedback (hover/press), slower and
+   eased for content entering the viewport (scroll reveals). */
+:root {
+  --duration-hover: 120ms;
+  --easing-standard: ease;
+  --duration-reveal: 400ms;
+  --easing-reveal: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --reveal-distance: 12px;
+}

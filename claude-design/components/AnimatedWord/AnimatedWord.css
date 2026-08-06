@@ -1,0 +1,87 @@
+.animated-word {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.animated-word__measure {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.animated-word__measure span {
+  display: block;
+}
+
+.animated-word__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.animated-word__item--in {
+  animation-name: animated-word-mask-in;
+  animation-duration: inherit;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+  animation-fill-mode: forwards;
+}
+
+.animated-word__item--out {
+  animation-name: animated-word-mask-out;
+  animation-duration: inherit;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes animated-word-mask-in {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 200%, 0 200%);
+    translate: 0px;
+  }
+  50% {
+    clip-path: polygon(0 0, 110% 0, 110% 200%, 0 200%);
+    translate: 50px;
+  }
+  100% {
+    clip-path: polygon(0 0, 110% 0, 110% 200%, 0 200%);
+    translate: 0px;
+  }
+}
+
+@keyframes animated-word-mask-out {
+  0% {
+    clip-path: polygon(0 0, 110% 0, 110% 200%, 0 200%);
+    translate: 0px;
+  }
+  100% {
+    clip-path: polygon(110% 0, 110% 0, 110% 200%, 110% 200%);
+    translate: 50px;
+  }
+}
+
+.animated-word__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-word__item--in,
+  .animated-word__item--out {
+    animation: none;
+  }
+}
