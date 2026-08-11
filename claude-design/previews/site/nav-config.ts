@@ -6,6 +6,7 @@ export interface NavChild {
 export interface NavSection {
   path: string
   label: string
+  group?: string
   children?: NavChild[]
 }
 
@@ -13,6 +14,7 @@ export const NAV_SECTIONS: NavSection[] = [
   { path: '/', label: 'Introduction' },
   {
     path: '/identity',
+    group: 'Brand Book',
     label: 'Identity',
     children: [
       { id: 'purpose', label: 'Purpose' },
@@ -30,6 +32,7 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     path: '/logos',
     label: 'Logos',
+    group: 'Brand Book',
     children: [
       { id: 'full-logo', label: 'Full Logo' },
       { id: 'wordmark', label: 'Wordmark' },
@@ -43,6 +46,7 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     path: '/typography',
     label: 'Typography',
+    group: 'Brand Book',
     children: [
       { id: 'primary-fonts', label: 'Primary fonts' },
       { id: 'secondary-font', label: 'Secondary font' },
@@ -52,6 +56,7 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     path: '/color',
     label: 'Color',
+    group: 'Brand Book',
     children: [
       { id: 'base', label: 'Base' },
       { id: 'accent-serialized', label: 'Accent — Serialized' },
@@ -63,6 +68,7 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     path: '/foundations',
     label: 'Foundations',
+    group: 'Brand Book',
     children: [
       { id: 'elevation', label: 'Elevation' },
       { id: 'rhythm', label: 'Rhythm' },
@@ -73,16 +79,17 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     path: '/icons',
     label: 'Icons',
+    group: 'Brand Book',
     children: [
       { id: 'weights', label: 'Weights' },
       { id: 'set', label: 'Set' },
     ],
   },
-  { path: '/sub-brands', label: 'Sub Brands' },
-  { path: '/media-kit', label: 'Media Kit' },
+  { path: '/sub-brands', label: 'Sub Brands', group: 'Brand Book' },
   {
     path: '/in-use',
     label: 'In Use',
+    group: 'Brand Book',
     children: [
       { id: 'scan-page', label: 'Scan page' },
       { id: 'button', label: 'Button' },
@@ -95,6 +102,7 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     path: '/design-system',
     label: 'Design System',
+    group: 'Design System',
     children: [
       { id: 'colors', label: 'Colors' },
       { id: 'typography-tokens', label: 'Typography' },
@@ -105,4 +113,5 @@ export const NAV_SECTIONS: NavSection[] = [
       { id: 'components', label: 'Components' },
     ],
   },
+  { path: '/media-kit', label: 'Media Kit', group: 'Media Kit' },
 ]

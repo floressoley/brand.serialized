@@ -96,11 +96,14 @@ export function Layout() {
         </div>
         <nav>
           <ul className="sidebar__nav">
-            {NAV_SECTIONS.map((section) => {
+            {NAV_SECTIONS.map((section, index) => {
               const hasChildren = !!section.children?.length
               const isOpen = hasChildren && openPath === section.path
+              const previousGroup = NAV_SECTIONS[index - 1]?.group
+              const showGroupHeader = section.group && section.group !== previousGroup
               return (
                 <li key={section.path}>
+                  {showGroupHeader && <div className="sidebar__group-label">{section.group}</div>}
                   <div className="sidebar__row">
                     <NavLink
                       to={section.path}
