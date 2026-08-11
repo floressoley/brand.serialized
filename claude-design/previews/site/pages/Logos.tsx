@@ -47,14 +47,14 @@ export function Logos() {
             <span className="logo-showcase__tag">On dark</span>
             <div className="logo-stage logo-stage--dark">
               <img src={horizontalOnDark} alt="Serialized full logo, on dark" />
-              <AssetActions svg={horizontalOnDarkRaw} href={horizontalOnDark} filename="serialized-horizontal-on-dark.svg" tone="dark" />
+              <AssetActions svg={horizontalOnDarkRaw} href={horizontalOnDark} filename="serialized-horizontal-on-dark" tone="dark" />
             </div>
           </div>
           <div className="logo-showcase__preview">
             <span className="logo-showcase__tag">On white</span>
             <div className="logo-stage logo-stage--light">
               <img src={horizontalOnLight} alt="Serialized full logo, on light" />
-              <AssetActions svg={horizontalOnLightRaw} href={horizontalOnLight} filename="serialized-horizontal-on-light.svg" tone="light" />
+              <AssetActions svg={horizontalOnLightRaw} href={horizontalOnLight} filename="serialized-horizontal-on-light" tone="light" />
             </div>
           </div>
         </div>
@@ -78,14 +78,14 @@ export function Logos() {
             <span className="logo-showcase__tag">On dark</span>
             <div className="logo-stage logo-stage--dark">
               <img src={wordmarkOnDark} alt="Serialized wordmark, on dark" />
-              <AssetActions svg={wordmarkOnDarkRaw} href={wordmarkOnDark} filename="serialized-wordmark-on-dark.svg" tone="dark" />
+              <AssetActions svg={wordmarkOnDarkRaw} href={wordmarkOnDark} filename="serialized-wordmark-on-dark" tone="dark" />
             </div>
           </div>
           <div className="logo-showcase__preview">
             <span className="logo-showcase__tag">On white</span>
             <div className="logo-stage logo-stage--light">
               <img src={wordmarkOnLight} alt="Serialized wordmark, on light" />
-              <AssetActions svg={wordmarkOnLightRaw} href={wordmarkOnLight} filename="serialized-wordmark-on-light.svg" tone="light" />
+              <AssetActions svg={wordmarkOnLightRaw} href={wordmarkOnLight} filename="serialized-wordmark-on-light" tone="light" />
             </div>
           </div>
         </div>
@@ -104,14 +104,14 @@ export function Logos() {
             <span className="logo-showcase__tag">On dark</span>
             <div className="logo-stage logo-stage--dark logo-stage--mark">
               <img src={markOnDark} alt="Serialized logomark, on dark" />
-              <AssetActions svg={markOnDarkRaw} href={markOnDark} filename="serialized-logomark-on-dark.svg" tone="dark" />
+              <AssetActions svg={markOnDarkRaw} href={markOnDark} filename="serialized-logomark-on-dark" tone="dark" />
             </div>
           </div>
           <div className="logo-showcase__preview">
             <span className="logo-showcase__tag">On white</span>
             <div className="logo-stage logo-stage--light logo-stage--mark">
               <img src={markOnLight} alt="Serialized logomark, on light" />
-              <AssetActions svg={markOnLightRaw} href={markOnLight} filename="serialized-logomark-on-light.svg" tone="light" />
+              <AssetActions svg={markOnLightRaw} href={markOnLight} filename="serialized-logomark-on-light" tone="light" />
             </div>
           </div>
         </div>
@@ -345,7 +345,7 @@ export function Logos() {
               <h3 className="in-use-row__title">Favicon</h3>
               <p>The logomark alone, matched to the system theme — reads clearly against both light and dark browser chrome.</p>
               <div className="in-use-row__actions">
-                <AssetActions svg={faviconSvgRaw} href={faviconSvg} filename="serialized-favicon.svg" tone="dark" />
+                <AssetActions svg={faviconSvgRaw} href={faviconSvg} filename="serialized-favicon" tone="dark" />
               </div>
             </div>
             <div className="in-use-row__media">

@@ -8,7 +8,8 @@
   transition: opacity 120ms ease;
 }
 
-.logo-stage:hover .asset-actions {
+.logo-stage:hover .asset-actions,
+.asset-card__preview:hover .asset-actions {
   opacity: 1;
 }
 
@@ -27,6 +28,11 @@
 .asset-actions__btn:hover {
   border-radius: 20px;
   transition: background-color 120ms ease, border-radius 200ms ease-out;
+}
+
+.asset-actions__btn:disabled {
+  cursor: wait;
+  opacity: 0.6;
 }
 
 .asset-actions--on-dark .asset-actions__btn {
