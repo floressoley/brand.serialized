@@ -574,6 +574,32 @@ export function FieldGenerator() {
                 </div>
               )}
 
+              <div className="field-gen__export-sticky">
+                <div className="field-gen__export-grid">
+                  <button
+                    type="button"
+                    className="field-gen__btn field-gen__btn--primary"
+                    onClick={handleCopySvg}
+                  >
+                    Copy SVG
+                  </button>
+                  <button type="button" className="field-gen__btn" onClick={handleCopyCode}>
+                    Copy code
+                  </button>
+                  <button type="button" className="field-gen__btn" onClick={handleDownloadSvg}>
+                    Download .svg
+                  </button>
+                  <button type="button" className="field-gen__btn" onClick={handleDownloadPng}>
+                    Download .png
+                  </button>
+                </div>
+              </div>
+              {exportText && (
+                <div className="field-gen__export-panel">
+                  <textarea readOnly value={exportText} onFocus={(e) => e.target.select()} />
+                </div>
+              )}
+
               <div className="field-gen__section">
                 <label>Field pattern</label>
                 <FieldSelect
@@ -822,25 +848,6 @@ export function FieldGenerator() {
                 </div>
               )}
 
-              <div className="field-gen__section">
-                <button type="button" className="field-gen__btn field-gen__btn--full field-gen__btn--primary" onClick={handleCopySvg}>
-                  Copy SVG (Figma-ready)
-                </button>
-                <button type="button" className="field-gen__btn field-gen__btn--full" onClick={handleCopyCode}>
-                  Copy CSS + HTML (site drop-in)
-                </button>
-                <button type="button" className="field-gen__btn field-gen__btn--full" onClick={handleDownloadSvg}>
-                  Download .svg
-                </button>
-                <button type="button" className="field-gen__btn field-gen__btn--full" onClick={handleDownloadPng}>
-                  Download .png
-                </button>
-                {exportText && (
-                  <div className="field-gen__export-panel">
-                    <textarea readOnly value={exportText} onFocus={(e) => e.target.select()} />
-                  </div>
-                )}
-              </div>
             </div>
 
             <div className="field-gen__stage-wrap">
