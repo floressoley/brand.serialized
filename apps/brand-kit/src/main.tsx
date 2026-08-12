@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import '../tokens/index.css'
+import '@serialized/design-tokens/index.css'
 import './site/site.css'
 import { Layout } from './site/Layout'
 import { Introduction } from './site/pages/Introduction'
@@ -15,14 +15,11 @@ import { DesignSystem } from './site/pages/DesignSystem'
 import { SubBrands } from './site/pages/SubBrands'
 import { MediaKit } from './site/pages/MediaKit'
 import { InUse } from './site/pages/InUse'
-import { Landing } from './site/pages/Landing'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* Standalone preview, no sidebar shell — still WIP in Figma, not part of the brand-kit nav. */}
-        <Route path="landing" element={<Landing />} />
         <Route element={<Layout />}>
           <Route index element={<Introduction />} />
           <Route path="identity" element={<Identity />} />

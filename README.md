@@ -1,11 +1,20 @@
 # brand.serialized
-Brand kit and design system for Serialized &amp; SerializedAudit.io
+Brand kit, design system, and marketing site for Serialized &amp; SerializedAudit.io.
+
+npm workspaces monorepo:
+- `apps/brand-kit` — internal brand-kit / design-system doc site
+- `apps/landing` — public marketing landing page
+- `packages/design-tokens` — shared CSS token layer, consumed by both apps
+- `packages/ui` — shared React component library, consumed by both apps
 
 ## Getting started
 ```
 npm install
-npm run dev
+npm run dev:brand-kit   # doc site, http://localhost:5173
+npm run dev:landing     # marketing page, http://localhost:5173 (own port if brand-kit is also running)
 ```
+
+Other scripts: `npm run build` (builds both apps), `npm run preview:brand-kit`, `npm run preview:landing`.
 
 ## Known warnings
 

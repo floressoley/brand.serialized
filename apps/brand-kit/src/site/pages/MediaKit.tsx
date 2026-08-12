@@ -9,19 +9,19 @@ function toCarouselItems(entries: [string, string][]) {
 
 const LINKEDIN_COVERS = toCarouselItems(
   Object.entries(
-    import.meta.glob<string>('../../../../brand-kit/banners/LinkedIn/*.png', { eager: true, import: 'default' }),
+    import.meta.glob<string>('../../../brand-kit/banners/LinkedIn/*.png', { eager: true, import: 'default' }),
   ).sort(([a], [b]) => a.localeCompare(b)),
 )
 
 const X_HEADERS = toCarouselItems(
   Object.entries(
-    import.meta.glob<string>('../../../../brand-kit/banners/X/*.png', { eager: true, import: 'default' }),
+    import.meta.glob<string>('../../../brand-kit/banners/X/*.png', { eager: true, import: 'default' }),
   ).sort(([a], [b]) => a.localeCompare(b)),
 )
 
 const X_POSTS = toCarouselItems(
   Object.entries(
-    import.meta.glob<string>('../../../../brand-kit/banners/X Posts/*.png', { eager: true, import: 'default' }),
+    import.meta.glob<string>('../../../brand-kit/banners/X Posts/*.png', { eager: true, import: 'default' }),
   ).sort(([a], [b]) => a.localeCompare(b)),
 )
 

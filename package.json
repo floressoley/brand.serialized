@@ -1,19 +1,18 @@
 {
-  "name": "serialized-design-system",
+  "name": "serialized-monorepo",
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "predev": "node scripts/check-onedrive.mjs",
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@phosphor-icons/react": "^2.1.10",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^7.18.2"
+    "dev:brand-kit": "npm run dev -w apps/brand-kit",
+    "dev:landing": "npm run dev -w apps/landing",
+    "build": "tsc -b && npm run build -ws --if-present",
+    "preview:brand-kit": "npm run preview -w apps/brand-kit",
+    "preview:landing": "npm run preview -w apps/landing"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

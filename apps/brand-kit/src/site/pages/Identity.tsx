@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { HexHero, InteractiveGrid } from '../../../components'
+import { HexHero, InteractiveGrid } from '@serialized/ui'
 import { SectionHero } from '../SectionHero'
 import './Identity.css'
 

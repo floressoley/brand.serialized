@@ -1,5 +1,5 @@
-import horizontalOnDark from '../../../../brand-kit/logo/serialized/serialized-horizontal-on-dark.svg'
-import { HexHero, InteractiveGrid, ShinyButton } from '../../../components'
+import horizontalOnDark from './assets/serialized-horizontal-on-dark.svg'
+import { HexHero, InteractiveGrid, ShinyButton } from '@serialized/ui'
 import './Landing.css'
 
 /**

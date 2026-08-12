@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { SectionHero } from '../SectionHero'
-import '../../../components/Button/Button.css'
+import '@serialized/ui/Button/Button.css'
 import './Introduction.css'
 
 const PILLARS = [

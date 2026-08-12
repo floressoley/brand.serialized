@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { ReactNode } from 'react'
-import auditLogoOnDark from '../../../../brand-kit/logo/audit/audit-horizontal-on-dark.svg'
-import { Badge, Button, Card, Nav, Table } from '../../../components'
+import auditLogoOnDark from '../../../brand-kit/logo/audit/audit-horizontal-on-dark.svg'
+import { Badge, Button, Card, Nav, Table } from '@serialized/ui'
 import { SectionHero } from '../SectionHero'
 import './DesignSystem.css'
 
@@ -144,7 +144,7 @@ const auditRows = [
 const COMPONENT_SPECS: ComponentSpec[] = [
   {
     name: 'Button',
-    path: 'claude-design/components/Button',
+    path: 'packages/ui/src/Button',
     preview: (
       <div className="component-preview__row">
         <Button variant="primary">Primary</Button>
@@ -163,7 +163,7 @@ const COMPONENT_SPECS: ComponentSpec[] = [
   },
   {
     name: 'Badge',
-    path: 'claude-design/components/Badge',
+    path: 'packages/ui/src/Badge',
     preview: (
       <div className="component-preview__row">
         <Badge tone="neutral">Neutral</Badge>
@@ -188,7 +188,7 @@ const COMPONENT_SPECS: ComponentSpec[] = [
   },
   {
     name: 'Card',
-    path: 'claude-design/components/Card',
+    path: 'packages/ui/src/Card',
     preview: (
       <div className="component-preview__grid">
         <Card title="Audit summary" description="Contract 0xA0b8...eB48">
@@ -210,7 +210,7 @@ const COMPONENT_SPECS: ComponentSpec[] = [
   },
   {
     name: 'Table',
-    path: 'claude-design/components/Table',
+    path: 'packages/ui/src/Table',
     preview: (
       <Table>
         <Table.Head>
@@ -244,7 +244,7 @@ const COMPONENT_SPECS: ComponentSpec[] = [
   },
   {
     name: 'Nav',
-    path: 'claude-design/components/Nav',
+    path: 'packages/ui/src/Nav',
     preview: (
       <div className="component-preview__frame">
         <Nav
@@ -320,7 +320,7 @@ export function DesignSystem() {
         <p className="content__eyebrow">Brand Kit · Design System</p>
         <p className="content__lede">
           The full token and component reference — hand off directly from here. Every value below is the
-          live source of truth (<code>claude-design/tokens/</code>), not a copy that can drift.
+          live source of truth (<code>packages/design-tokens/</code>), not a copy that can drift.
         </p>
 
         <div className="section" id="colors">

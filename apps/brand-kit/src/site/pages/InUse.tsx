@@ -1,5 +1,5 @@
-import auditLogoOnDark from '../../../../brand-kit/logo/audit/audit-horizontal-on-dark.svg'
-import { Badge, Button, Card, Nav, ShinyButton, Table } from '../../../components'
+import auditLogoOnDark from '../../../brand-kit/logo/audit/audit-horizontal-on-dark.svg'
+import { Badge, Button, Card, Nav, ShinyButton, Table } from '@serialized/ui'
 import { SectionHero } from '../SectionHero'
 import './InUse.css'
 
@@ -18,7 +18,7 @@ export function InUse() {
       <p className="content__eyebrow">Brand Kit · In Use</p>
       <p className="content__lede">
         The system applied to a SerializedAudit.io-style scan page — components from
-        claude-design/components, built on the tokens documented in this kit.
+        packages/ui/src, built on the tokens documented in this kit.
       </p>
 
       <div className="section" id="scan-page">
