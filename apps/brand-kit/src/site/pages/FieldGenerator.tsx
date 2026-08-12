@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { PointerEvent as ReactPointerEvent } from 'react'
-import { CaretDown, CaretUp } from '@phosphor-icons/react'
+import type { KeyboardEvent as ReactKeyboardEvent, PointerEvent as ReactPointerEvent } from 'react'
+import { CaretDown, CaretUp, Check } from '@phosphor-icons/react'
 import { computeBarAngle } from '@serialized/ui/MagnetLines/angle'
 import { triggerDownload } from '../download'
 import { SectionHero } from '../SectionHero'
@@ -23,6 +23,11 @@ const PRESET_OPTIONS: { value: FieldPreset; label: string }[] = [
   { value: 'single', label: 'Single vortex' },
   { value: 'perspective', label: 'Perspective sweep' },
   { value: 'wave', label: 'Diagonal wave' },
+]
+
+const POLE_SIGN_OPTIONS: { value: 1 | -1; label: string }[] = [
+  { value: 1, label: 'Swirl clockwise' },
+  { value: -1, label: 'Swirl counter-clockwise' },
 ]
 
 const SIZE_PRESETS = [
@@ -102,6 +107,119 @@ function NumberStepper({ value, min, max, onChange }: { value: number; min: numb
           <CaretDown size={8} weight="bold" />
         </button>
       </span>
+    </div>
+  )
+}
+
+interface SelectOption<T extends string | number> {
+  value: T
+  label: string
+}
+
+function FieldSelect<T extends string | number>({
+  value,
+  options,
+  onChange,
+  ariaLabel,
+}: {
+  value: T
+  options: SelectOption<T>[]
+  onChange: (v: T) => void
+  ariaLabel: string
+}) {
+  const [open, setOpen] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(() => options.findIndex((o) => o.value === value))
+  const rootRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    function onDocPointerDown(e: PointerEvent) {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('pointerdown', onDocPointerDown)
+    return () => document.removeEventListener('pointerdown', onDocPointerDown)
+  }, [])
+
+  useEffect(() => {
+    if (open) setActiveIndex(Math.max(0, options.findIndex((o) => o.value === value)))
+  }, [open, value, options])
+
+  function commit(index: number) {
+    const opt = options[index]
+    if (!opt) return
+    onChange(opt.value)
+    setOpen(false)
+  }
+
+  function handleKeyDown(e: ReactKeyboardEvent<HTMLDivElement>) {
+    if (!open) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        setOpen(true)
+      }
+      return
+    }
+    if (e.key === 'Escape') {
+      e.preventDefault()
+      setOpen(false)
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      setActiveIndex((i) => Math.min(options.length - 1, i + 1))
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      setActiveIndex((i) => Math.max(0, i - 1))
+    } else if (e.key === 'Home') {
+      e.preventDefault()
+      setActiveIndex(0)
+    } else if (e.key === 'End') {
+      e.preventDefault()
+      setActiveIndex(options.length - 1)
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      commit(activeIndex)
+    } else if (e.key === 'Tab') {
+      setOpen(false)
+    }
+  }
+
+  const current = options.find((o) => o.value === value)
+
+  return (
+    <div className="field-gen__select" ref={rootRef} onKeyDown={handleKeyDown}>
+      <button
+        type="button"
+        className={`field-gen__select-trigger${open ? ' field-gen__select-trigger--open' : ''}`}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={ariaLabel}
+        onClick={() => setOpen((o) => !o)}
+      >
+        <span>{current?.label ?? ''}</span>
+        <CaretDown
+          size={12}
+          weight="bold"
+          className={`field-gen__select-caret${open ? ' field-gen__select-caret--open' : ''}`}
+        />
+      </button>
+      {open && (
+        <ul className="field-gen__select-menu" role="listbox" aria-label={ariaLabel}>
+          {options.map((opt, i) => {
+            const selected = opt.value === value
+            return (
+              <li
+                key={opt.value}
+                role="option"
+                aria-selected={selected}
+                className={`field-gen__select-option${i === activeIndex ? ' field-gen__select-option--active' : ''}${selected ? ' field-gen__select-option--selected' : ''}`}
+                onMouseEnter={() => setActiveIndex(i)}
+                onClick={() => commit(i)}
+              >
+                <span>{opt.label}</span>
+                {selected && <Check size={12} weight="bold" />}
+              </li>
+            )
+          })}
+        </ul>
+      )}
     </div>
   )
 }
@@ -458,13 +576,12 @@ export function FieldGenerator() {
 
               <div className="field-gen__section">
                 <label>Field pattern</label>
-                <select value={settings.preset} onChange={(e) => applyPreset(e.target.value as FieldPreset)}>
-                  {PRESET_OPTIONS.map((p) => (
-                    <option key={p.value} value={p.value}>
-                      {p.label}
-                    </option>
-                  ))}
-                </select>
+                <FieldSelect
+                  value={settings.preset}
+                  options={PRESET_OPTIONS}
+                  onChange={applyPreset}
+                  ariaLabel="Field pattern"
+                />
 
                 {settings.preset === 'livecursor' && (
                   <RangeField
@@ -479,16 +596,12 @@ export function FieldGenerator() {
                 {settings.preset === 'single' && (
                   <div className="field-gen__control">
                     <label style={{ display: 'block', marginBottom: 4 }}>Pole polarity</label>
-                    <select
-                      value={settings.poles[0]?.sign}
-                      onChange={(e) => {
-                        const sign = parseInt(e.target.value, 10) as 1 | -1
-                        setSettings((s) => ({ ...s, poles: [{ ...s.poles[0], sign }] }))
-                      }}
-                    >
-                      <option value={1}>Swirl clockwise</option>
-                      <option value={-1}>Swirl counter-clockwise</option>
-                    </select>
+                    <FieldSelect
+                      value={settings.poles[0]?.sign ?? 1}
+                      options={POLE_SIGN_OPTIONS}
+                      onChange={(sign) => setSettings((s) => ({ ...s, poles: [{ ...s.poles[0], sign }] }))}
+                      ariaLabel="Pole polarity"
+                    />
                   </div>
                 )}
                 {settings.preset === 'perspective' && (
