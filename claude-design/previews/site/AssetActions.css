@@ -9,7 +9,8 @@
 }
 
 .logo-stage:hover .asset-actions,
-.asset-card__preview:hover .asset-actions {
+.asset-card__preview:hover .asset-actions,
+.asset-carousel__preview:hover .asset-actions {
   opacity: 1;
 }
 

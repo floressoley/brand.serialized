@@ -1,23 +1,29 @@
 import { useState } from 'react'
-import { AssetActions } from '../AssetActions'
+import { AssetCarousel } from '../AssetCarousel'
 import { SectionHero } from '../SectionHero'
 import './MediaKit.css'
 
-function assetLabel(path: string) {
-  return path.split('/').pop()!.replace(/\.png$/i, '')
+function toCarouselItems(entries: [string, string][]) {
+  return entries.map(([path, src]) => ({ path, src }))
 }
 
-const LINKEDIN_COVERS = Object.entries(
-  import.meta.glob<string>('../../../../brand-kit/banners/LinkedIn/*.png', { eager: true, import: 'default' }),
-).sort(([a], [b]) => a.localeCompare(b))
+const LINKEDIN_COVERS = toCarouselItems(
+  Object.entries(
+    import.meta.glob<string>('../../../../brand-kit/banners/LinkedIn/*.png', { eager: true, import: 'default' }),
+  ).sort(([a], [b]) => a.localeCompare(b)),
+)
 
-const X_HEADERS = Object.entries(
-  import.meta.glob<string>('../../../../brand-kit/banners/X/*.png', { eager: true, import: 'default' }),
-).sort(([a], [b]) => a.localeCompare(b))
+const X_HEADERS = toCarouselItems(
+  Object.entries(
+    import.meta.glob<string>('../../../../brand-kit/banners/X/*.png', { eager: true, import: 'default' }),
+  ).sort(([a], [b]) => a.localeCompare(b)),
+)
 
-const X_POSTS = Object.entries(
-  import.meta.glob<string>('../../../../brand-kit/banners/X Posts/*.png', { eager: true, import: 'default' }),
-).sort(([a], [b]) => a.localeCompare(b))
+const X_POSTS = toCarouselItems(
+  Object.entries(
+    import.meta.glob<string>('../../../../brand-kit/banners/X Posts/*.png', { eager: true, import: 'default' }),
+  ).sort(([a], [b]) => a.localeCompare(b)),
+)
 
 const BOILERPLATE = [
   {
@@ -61,24 +67,6 @@ function CopyBlock({ label, text }: { label: string; text: string }) {
   )
 }
 
-function AssetCard({ src, path, dimensions }: { src: string; path: string; dimensions: string }) {
-  const label = assetLabel(path)
-  const tone = /light/i.test(label) ? 'light' : 'dark'
-
-  return (
-    <div className="asset-card">
-      <div className="asset-card__preview">
-        <img src={src} alt={label} loading="lazy" />
-        <AssetActions href={src} filename={label} tone={tone} />
-      </div>
-      <div className="asset-card__meta">
-        <span className="asset-card__name">{label}</span>
-        <span className="asset-card__dimensions">{dimensions}</span>
-      </div>
-    </div>
-  )
-}
-
 export function MediaKit() {
   return (
     <div>
@@ -102,25 +90,13 @@ export function MediaKit() {
           </p>
 
           <h3 className="media-kit__subhead">LinkedIn covers</h3>
-          <div className="asset-grid asset-grid--wide">
-            {LINKEDIN_COVERS.map(([path, src]) => (
-              <AssetCard key={path} src={src} path={path} dimensions="1584 × 396" />
-            ))}
-          </div>
+          <AssetCarousel items={LINKEDIN_COVERS} dimensions="1584 × 396" />
 
           <h3 className="media-kit__subhead">X headers</h3>
-          <div className="asset-grid asset-grid--wide">
-            {X_HEADERS.map(([path, src]) => (
-              <AssetCard key={path} src={src} path={path} dimensions="1500 × 500" />
-            ))}
-          </div>
+          <AssetCarousel items={X_HEADERS} dimensions="1500 × 500" />
 
           <h3 className="media-kit__subhead">X posts</h3>
-          <div className="asset-grid asset-grid--square">
-            {X_POSTS.map(([path, src]) => (
-              <AssetCard key={path} src={src} path={path} dimensions="1280 × 850" />
-            ))}
-          </div>
+          <AssetCarousel items={X_POSTS} dimensions="1280 × 850" />
         </div>
 
         <div className="section" id="press">
