@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { triggerDownload } from './download'
 import './AssetActions.css'
 
 export interface AssetActionsProps {
@@ -6,13 +7,6 @@ export interface AssetActionsProps {
   href: string
   filename: string
   tone?: 'dark' | 'light'
-}
-
-function triggerDownload(url: string, filename: string) {
-  const link = document.createElement('a')
-  link.href = url
-  link.download = filename
-  link.click()
 }
 
 // Renders the SVG onto an offscreen canvas at a fixed pixel density so the

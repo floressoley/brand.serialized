@@ -20,6 +20,7 @@
  */
 import { useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
+import { computeBarAngle } from './angle'
 import './MagnetLines.css'
 
 export interface MagnetLinesProps {
@@ -56,16 +57,8 @@ export function MagnetLines({
         const rect = item.getBoundingClientRect()
         const centerX = rect.x + rect.width / 2
         const centerY = rect.y + rect.height / 2
-        const b = pointer.clientX - centerX
-        const a = pointer.clientY - centerY
-        const c = Math.sqrt(a * a + b * b) || 1
-        const r = ((Math.acos(b / c) * 180) / Math.PI) * (pointer.clientY > centerY ? 1 : -1)
-
         const prev = item._prev ?? baseAngle
-        let delta = r - (prev % 360)
-        if (delta > 180) delta -= 360
-        else if (delta < -180) delta += 360
-        item._prev = prev + delta
+        item._prev = computeBarAngle(centerX, centerY, pointer.clientX, pointer.clientY, prev)
         item.style.setProperty('--rotate', `${item._prev}deg`)
       }
     }
