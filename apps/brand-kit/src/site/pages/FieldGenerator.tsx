@@ -3,7 +3,6 @@ import type { KeyboardEvent as ReactKeyboardEvent, PointerEvent as ReactPointerE
 import { CaretDown, CaretUp, Check } from '@phosphor-icons/react'
 import { computeBarAngle } from '@serialized/ui/MagnetLines/angle'
 import { triggerDownload } from '../download'
-import { SectionHero } from '../SectionHero'
 import {
   DEFAULT_FIELD_SETTINGS,
   PRESET_DEFAULTS,
@@ -506,9 +505,7 @@ export function FieldGenerator() {
 
   return (
     <div>
-      <SectionHero />
       <div className="page-body">
-        <p className="content__eyebrow">Brand Kit · Media Kit · Field Generator</p>
         <p className="content__lede">
           Generative magnetic line field tool. Tune the field, export SVG for Figma, or copy CSS/HTML matching the
           site's <code>.magnet-lines</code> system.

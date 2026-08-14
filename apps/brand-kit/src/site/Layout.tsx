@@ -153,9 +153,11 @@ export function Layout() {
         </nav>
       </aside>
       <main className="content">
-        <div className="content-hero-bg">
-          <InteractiveGrid />
-        </div>
+        {location.pathname !== '/field-generator' && (
+          <div className="content-hero-bg">
+            <InteractiveGrid />
+          </div>
+        )}
         <div className="content__inner content__inner--enter" key={location.pathname}>
           <Outlet />
         </div>
