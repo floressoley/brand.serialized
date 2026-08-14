@@ -58,7 +58,7 @@
 .landing-header__link {
   font-family: var(--font-body);
   font-size: 14px;
-  color: var(--color-text-secondary);
+  color: var(--color-muted);
   text-decoration: none;
   transition: color var(--duration-hover) var(--easing-standard);
 }
@@ -184,7 +184,7 @@
   max-width: 460px;
   font-size: 17px;
   line-height: 1.55;
-  color: var(--color-text-secondary);
+  color: var(--color-muted);
 }
 
 .landing-social {
