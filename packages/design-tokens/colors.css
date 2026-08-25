@@ -12,12 +12,12 @@
   --color-muted: #9CA3AF;
 
   /* Accent — Serialized (brand) */
-  --color-accent-serialized: #7EABF5;
+  --color-accent-serialized: #3D74FF;
   --color-accent-serialized-bg: #0F1829;
 
   /* Accent — Audit (SerializedAudit.io) */
-  --color-accent-audit: #51DA4C;
-  --color-accent-audit-16: rgba(81, 218, 76, 0.16);
+  --color-accent-audit: #3DCF8E;
+  --color-accent-audit-16: rgba(61, 207, 142, 0.16);
   --color-accent-audit-bg: #1D282C;
 
   /* Semantic */

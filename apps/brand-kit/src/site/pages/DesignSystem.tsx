@@ -2,7 +2,6 @@ import { useState } from 'react'
 import type { ReactNode } from 'react'
 import auditLogoOnDark from '../../../brand-kit/logo/audit/audit-horizontal-on-dark.svg'
 import { Badge, Button, Card, Nav, Table } from '@serialized/ui'
-import { SectionHero } from '../SectionHero'
 import './DesignSystem.css'
 
 interface TokenRow {
@@ -37,7 +36,7 @@ const COLOR_GROUPS: TokenGroup[] = [
     id: 'accent-serialized',
     title: 'Accent — Serialized',
     rows: [
-      { name: 'Accent', variable: '--color-accent-serialized', value: '#7EABF5' },
+      { name: 'Accent', variable: '--color-accent-serialized', value: '#3D74FF' },
       { name: 'Accent Background', variable: '--color-accent-serialized-bg', value: '#0F1829' },
     ],
   },
@@ -45,8 +44,8 @@ const COLOR_GROUPS: TokenGroup[] = [
     id: 'accent-audit',
     title: 'Accent — Audit',
     rows: [
-      { name: 'Accent', variable: '--color-accent-audit', value: '#51DA4C' },
-      { name: 'Accent 16%', variable: '--color-accent-audit-16', value: 'rgba(81,218,76,0.16)' },
+      { name: 'Accent', variable: '--color-accent-audit', value: '#3DCF8E' },
+      { name: 'Accent 16%', variable: '--color-accent-audit-16', value: 'rgba(61,207,142,0.16)' },
       { name: 'Accent Background', variable: '--color-accent-audit-bg', value: '#1D282C' },
     ],
   },
@@ -65,15 +64,13 @@ const COLOR_GROUPS: TokenGroup[] = [
 ]
 
 const TYPE_FAMILY_ROWS: TokenRow[] = [
-  { name: 'Display', variable: '--font-display', value: "'Fraunces', serif" },
+  { name: 'Display', variable: '--font-display', value: "'Satoshi', sans-serif (overridden here — Fraunces is reserved for the logo lockup only)" },
   { name: 'Body', variable: '--font-body', value: "'Satoshi', sans-serif" },
   { name: 'Mono', variable: '--font-mono', value: "'Roboto Mono', monospace" },
 ]
 
 const TYPE_DETAIL_ROWS: TokenRow[] = [
-  { name: 'Display variation axes', variable: '--font-display-settings', value: "'opsz' 38, 'wght' 360, 'SOFT' 17, 'WONK' 0.36" },
-  { name: 'Display axes (large sizes)', variable: '--font-display-large-settings', value: "'opsz' 38, 'wght' 320, 'SOFT' 47, 'WONK' 0.36" },
-  { name: 'Display letter-spacing', variable: '--font-display-letter-spacing', value: '-1px' },
+  { name: 'Display letter-spacing', variable: '--font-display-letter-spacing', value: '0.2px' },
   { name: 'Body weight', variable: '--font-body-weight', value: '400' },
   { name: 'Body letter-spacing', variable: '--font-body-letter-spacing', value: '0.2px' },
   { name: 'Mono letter-spacing (13px+)', variable: '--font-mono-letter-spacing', value: '0.02em' },
@@ -81,8 +78,8 @@ const TYPE_DETAIL_ROWS: TokenRow[] = [
 ]
 
 const TYPE_SCALE = [
-  { name: 'Display Large', size: '--text-display-large-size (96px)', line: '0.95', tracking: '-0.02em', family: 'Fraunces' },
-  { name: 'Headline Large', size: '--text-headline-large-size (56px)', line: '0.95', tracking: '-0.02em', family: 'Fraunces' },
+  { name: 'Display Large', size: '--text-display-large-size (96px)', line: '0.95', tracking: '-0.02em', family: 'Satoshi 500' },
+  { name: 'Headline Large', size: '--text-headline-large-size (56px)', line: '0.95', tracking: '-0.02em', family: 'Satoshi 500' },
   { name: 'Headline', size: '--text-headline-size (32px)', line: '1.05', tracking: '-0.01em', family: 'Satoshi 500' },
   { name: 'Subheadline', size: '--text-subheadline-size (22px)', line: '1.1', tracking: '-0.01em', family: 'Satoshi 500' },
   { name: 'Body', size: '--font-body-size (16px)', line: '1.1', tracking: '0.2px', family: 'Satoshi 400' },
@@ -314,8 +311,6 @@ function TokenTable({ rows }: { rows: TokenRow[] }) {
 export function DesignSystem() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
         <p className="content__eyebrow">Brand Kit · Design System</p>
         <p className="content__lede">

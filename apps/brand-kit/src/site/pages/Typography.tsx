@@ -1,19 +1,14 @@
-import { SectionHero } from '../SectionHero'
 import './Typography.css'
 
 const PRIMARY_VARIANTS = [
   {
     role: 'Headlines',
-    name: 'Fraunces',
-    style: {
-      fontFamily: 'var(--font-display)',
-      fontVariationSettings: 'var(--font-display-large-settings)',
-      letterSpacing: 'var(--text-headline-large-tracking)',
-    },
+    name: 'Satoshi',
+    style: { fontFamily: 'var(--font-body)', fontWeight: 500, letterSpacing: 'var(--font-body-letter-spacing)' },
     alphabetStyle: {
-      fontFamily: 'var(--font-display)',
-      fontVariationSettings: 'var(--font-display-settings)',
-      letterSpacing: 'var(--font-display-letter-spacing)',
+      fontFamily: 'var(--font-body)',
+      fontWeight: 500,
+      letterSpacing: 'var(--font-body-letter-spacing)',
     },
   },
   {
@@ -42,7 +37,7 @@ const SECONDARY_VARIANTS = [
 const TYPE_SCALE = [
   {
     name: 'Display Large',
-    font: 'Fraunces (wght 300)',
+    font: 'Satoshi Medium',
     tracking: '-2%',
     lineHeight: '95%',
     className: 'text-display-large',
@@ -50,7 +45,7 @@ const TYPE_SCALE = [
   },
   {
     name: 'Headline Large',
-    font: 'Fraunces (wght 300)',
+    font: 'Satoshi Medium',
     tracking: '-2%',
     lineHeight: '95%',
     className: 'text-headline-large',
@@ -93,28 +88,30 @@ const TYPE_SCALE = [
 export function Typography() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
       <p className="content__eyebrow">Brand Kit · Typography</p>
       <p className="content__lede">
-        Three fonts, three jobs — Fraunces for big moments, Satoshi for everything you read, Roboto Mono for
-        anything literal.
+        Two fonts, two jobs — Satoshi for everything you read, Roboto Mono for anything literal. Fraunces is
+        retired from live text; it lives on only in the logo lockup.
       </p>
 
       <div className="font-showcase font-showcase--label-left" id="primary-fonts">
         <div className="font-showcase__info">
           <div className="font-showcase__label">
             <span>Typography</span>
-            <span>Primary fonts</span>
+            <span>Primary font</span>
           </div>
           <p>
-            Fraunces and Satoshi are the primary typefaces for the Serialized brand. Fraunces carries
-            headlines and big statements; Satoshi carries everything you read.
+            Satoshi is the primary typeface for the Serialized brand — headlines, big statements, and
+            everything you read all run on it now.
           </p>
           <p style={{ marginTop: 'var(--space-6)' }}>
-            Use Fraunces for headlines only, never body copy. Use Satoshi Medium for smaller headline roles
-            and Regular for body copy — see Type usage below for the exact sizes.
+            Use Satoshi Medium for headline roles and Regular for body copy — see Type usage below for the
+            exact sizes. Fraunces no longer appears anywhere in live UI; it's reserved exclusively for the{' '}
+            <a href="/logos" style={{ color: 'var(--color-accent-serialized)' }}>
+              logo lockup
+            </a>
+            , where it's baked into the artwork rather than rendered as text.
           </p>
         </div>
         <div className="font-showcase__content">

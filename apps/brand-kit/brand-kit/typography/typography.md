@@ -1,27 +1,13 @@
 # Typography
 
-Three-family system: a variable display serif, a workhorse sans, and a mono for data — each with a distinct job, no overlap.
+Two-family system for live UI: a workhorse sans and a mono for data — each with a distinct job, no overlap.
+Fraunces, the former display serif, is retired from live text and now lives only in the logo lockup artwork
+(baked into the SVG paths, not rendered via CSS) — see `brand-kit/logo`.
 
-## Fraunces — Display / short text only
+## Satoshi — Display / Body / UI
 
-Headlines, titles, hero statements. **Not for body copy or long-form text** — used sparingly, in short bursts, where the brand wants warmth and editorial weight against an otherwise cold/precise system.
-
-Variable font axes (locked values):
-
-| Axis | Value |
-|---|---|
-| Optical size (`opsz`) | 38 |
-| Weight (`wght`) | 360 |
-| Soft (`SOFT`) | 17 |
-| Wonk (`WONK`) | 0.36 |
-
-```css
-font-variation-settings: 'opsz' 38, 'wght' 360, 'SOFT' 17, 'WONK' 0.36;
-```
-
-## Satoshi — Body / UI
-
-Body copy, paragraphs, buttons, links, UI labels. The default text face everywhere Fraunces isn't explicitly called for. Sourced from Fontshare, not Google Fonts.
+Headlines, titles, hero statements, body copy, paragraphs, buttons, links, UI labels — everything. Use
+Medium (500) weight for headline roles, Regular (400) for body copy. Sourced from Fontshare, not Google Fonts.
 
 Default rendering: **Regular (400)** weight, **16px**, with **0.2px** letter-spacing — a light touch of tracking without going Light/quiet. Components may override weight/size for intentional emphasis (e.g. buttons, active nav states).
 
@@ -38,17 +24,17 @@ Labels, data values, code, tabular/numeric content, decorative technical accents
 
 ## Usage rules
 
-- Fraunces stays short: page titles, section headers, standalone statements — never paragraphs.
-- Satoshi carries all reading-length content.
+- Satoshi carries all reading-length content and all headline roles.
 - Roboto Mono is reserved for literal data/code, not for stylistic emphasis on prose.
+- Fraunces never appears as live, CSS-rendered text — it exists only inside the logo SVG artwork.
 
 ## Sourcing
 
-Fraunces and Roboto Mono are on Google Fonts. Satoshi is sourced from Fontshare:
+Roboto Mono is on Google Fonts. Satoshi is sourced from Fontshare:
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,100..900,0..100,0..1&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
 ```

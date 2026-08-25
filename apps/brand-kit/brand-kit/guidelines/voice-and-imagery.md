@@ -6,12 +6,12 @@
 
 **Precision** — Monospace for anything literal (data, code, addresses, hashes). Tight, deliberate grid and spacing. Numbers and technical values are never styled as decoration — they're presented as-is, legibly.
 
-**Excellence** — Editorial polish in the few places warmth is allowed (Fraunces headlines), engineering rigor everywhere else (Rotobo Mono, systemized color/type tokens). The contrast between the two is the brand: premium *and* technical, not one at the expense of the other.
+**Excellence** — Editorial polish in the few places warmth is allowed (the Fraunces logo lockup), engineering rigor everywhere else (Satoshi headlines and body copy, Roboto Mono, systemized color/type tokens). The contrast between the two is the brand: premium *and* technical, not one at the expense of the other.
 
 ## Voice
 
 - Direct, technical, unhyped. State findings/facts plainly — this is an audit tool, credibility depends on not sounding like marketing copy.
-- Short Fraunces statements for emphasis; everything else in Satoshi, plain and clear.
+- Short Satoshi statements for emphasis; everything else in Satoshi, plain and clear.
 
 ## Imagery direction
 

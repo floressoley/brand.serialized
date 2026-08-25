@@ -36,6 +36,7 @@
 .logo-showcase__info h2 {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
+  font-weight: 500;
   letter-spacing: var(--font-display-letter-spacing);
   font-size: 32px;
   line-height: 1.2;
@@ -377,6 +378,7 @@
 .in-use-row__title {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
+  font-weight: 500;
   letter-spacing: var(--font-display-letter-spacing);
   font-size: var(--text-subheadline-size);
   line-height: 1.2;

@@ -8,21 +8,21 @@ Three diagonal parallelogram bars of increasing length — an abstracted slash/s
 
 | File | Lockup | Size | Colors | Use on |
 |---|---|---|---|---|
-| `serialized/serialized-horizontal-on-dark.svg` | Wordmark + mark | 510×90 | Mono `#FFFFFF` | Dark backgrounds |
-| `serialized/serialized-horizontal-on-light.svg` | Wordmark + mark | 510×89 | Mono `#1A1A19` | Light backgrounds |
-| `serialized/serialized-logomark-on-dark.svg` | Mark only | 512×512 | Mono `#FFFFFF` | Dark backgrounds |
-| `serialized/serialized-logomark-on-light.svg` | Mark only | 512×512 | Mono `#1A1A19` | Light backgrounds |
-| `audit/audit-horizontal-on-dark.svg` | "Serialized / Audit" wordmark + mark | 788×90 | `#FFFFFF` / `#51DA4C` (third bar + "Audit" in Accent Audit) | Dark backgrounds |
-| `audit/audit-horizontal-on-light.svg` | "Serialized / Audit" wordmark + mark | 788×90 | `#1A1A19` / `#51DA4C` (third bar + "Audit" in Accent Audit) | Light backgrounds |
-| `audit/audit-logomark-on-dark.svg` | Mark only, Audit variant | 512×512 | `#FFFFFF` + `#51DA4C` (third bar) | Dark backgrounds |
-| `audit/audit-logomark-on-light.svg` | Mark only, Audit variant | 512×512 | `#1A1A19` + `#51DA4C` (third bar) | Light backgrounds |
+| `serialized/serialized-horizontal-on-dark.svg` | Wordmark + mark | 510×90 | Mark `#3D74FF` / Wordmark `#FFFFFF` | Dark backgrounds |
+| `serialized/serialized-horizontal-on-light.svg` | Wordmark + mark | 510×89 | Mark `#3D74FF` / Wordmark `#1A1A19` | Light backgrounds |
+| `serialized/serialized-logomark-on-dark.svg` | Mark only | 512×512 | `#3D74FF` | Dark backgrounds |
+| `serialized/serialized-logomark-on-light.svg` | Mark only | 512×512 | `#3D74FF` | Light backgrounds |
+| `audit/audit-horizontal-on-dark.svg` | "Serialized / Audit" wordmark + mark | 487×57 | Mark + "Audit" `#3DCF8E` / "Serialized" `#FFFFFF` | Dark backgrounds |
+| `audit/audit-horizontal-on-light.svg` | "Serialized / Audit" wordmark + mark | 487×57 | Mark + "Audit" `#3DCF8E` / "Serialized" `#0F0F0F` | Light backgrounds |
+| `audit/audit-logomark-on-dark.svg` | Mark only, Audit variant | 114×214 | `#3DCF8E` | Dark backgrounds |
+| `audit/audit-logomark-on-light.svg` | Mark only, Audit variant | 114×214 | `#3DCF8E` | Light backgrounds |
 
-> **Note on source files:** in the original export, `Serialized.Logomark (Dark Mode).svg` and `Serialized.Logomark (Light Mode).svg` had their fills swapped (the "Dark Mode" file was filled near-black, and "Light Mode" was filled near-white — backwards relative to every other pair, including the Audit logomark). The files above are named by their actual fill color, not the source filenames — re-export with corrected labels when convenient.
+> **Mark color rule:** as of 2026-08, the logomark (the three slash bars) is always its accent color and never switches to white on dark / near-black on light. Parent Serialized uses Accent Serialized `#3D74FF`; the Audit lockup uses Accent Audit `#3DCF8E` (the entire mark, not just the third bar, plus the ".Audit" wordmark). In both families, only the "Serialized" wordmark text still swaps `#FFFFFF`/`#1A1A19` (or `#0F0F0F` for Audit) by background.
 
 ## Usage
 
 - **Serialized lockups** (blue-accent brand) for the parent brand — marketing site, brand-level surfaces.
-- **Audit lockups** (green third bar) exclusively for SerializedAudit.io product surfaces. Never substitute one lockup for the other's context.
+- **Audit lockups** (green mark + ".Audit" wordmark) exclusively for SerializedAudit.io product surfaces. Never substitute one lockup for the other's context.
 - Use `on-dark` variants on dark surfaces (`--color-background` `#1A1A19` or similar), `on-light` on light surfaces. Never place a variant against a background it wasn't built for — contrast is the whole point.
 - Use `logomark`-only variants where space is constrained (favicons, avatars, app icons) or alongside an already-established wordmark elsewhere on the page.
 

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { SectionHero } from '../SectionHero'
 import './Color.css'
 
 const GROUPS = [
@@ -24,7 +23,7 @@ const GROUPS = [
     title: 'Accent — Serialized (brand)',
     body: 'Brand-level surfaces — marketing site, Serialized product family. Links, highlights, primary CTA on dark.',
     swatches: [
-      ['Accent Serialized', '#7EABF5'],
+      ['Accent Serialized', '#3D74FF'],
       ['Accent Background', '#0F1829'],
     ],
   },
@@ -33,8 +32,8 @@ const GROUPS = [
     title: 'Accent — Audit (product)',
     body: 'SerializedAudit.io surfaces only — pass states, primary actions. Do not mix with Serialized blue as competing primaries on the same screen.',
     swatches: [
-      ['Accent Audit', '#51DA4C'],
-      ['Accent Audit 16%', 'rgba(81,218,76,0.16)'],
+      ['Accent Audit', '#3DCF8E'],
+      ['Accent Audit 16%', 'rgba(61,207,142,0.16)'],
       ['Audit Background', '#1D282C'],
     ],
   },
@@ -117,8 +116,6 @@ function SwatchCard({ name, hex }: { name: string; hex: string }) {
 export function Color() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
       <p className="content__eyebrow">Brand Kit · Color</p>
       <p className="content__lede">

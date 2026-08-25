@@ -1,6 +1,7 @@
 .intro-statement {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-large-settings);
+  font-weight: 500;
   letter-spacing: var(--text-headline-large-tracking);
   font-size: 34px;
   line-height: 1.15;
@@ -32,6 +33,7 @@
 .pillar__label-title {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
+  font-weight: 500;
   letter-spacing: var(--font-display-letter-spacing);
   font-size: 24px;
   color: var(--color-text-primary);

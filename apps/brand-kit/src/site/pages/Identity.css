@@ -45,6 +45,7 @@
 .identity-row__content h2 {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
+  font-weight: 500;
   letter-spacing: var(--font-display-letter-spacing);
   font-size: 32px;
   line-height: 1.2;
@@ -64,6 +65,7 @@
 .identity-statement {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-large-settings);
+  font-weight: 500;
   letter-spacing: var(--text-headline-large-tracking);
   font-size: 30px;
   line-height: 1.3;
@@ -151,6 +153,7 @@
 .identity-belief__name {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
+  font-weight: 500;
   letter-spacing: var(--font-display-letter-spacing);
   font-size: var(--text-subheadline-size);
   line-height: 1.2;

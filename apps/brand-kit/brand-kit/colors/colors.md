@@ -20,15 +20,15 @@ Dark-mode-first, monochromatic base with two accent lanes and a semantic set. Ai
 
 | Name | Hex | Usage |
 |---|---|---|
-| Accent Serialized | `#7EABF5` | Serialized brand highlights, links, primary CTA on dark |
+| Accent Serialized | `#3D74FF` | Serialized brand highlights, links, primary CTA on dark |
 | Accent Background | `#0F1829` | Tinted surface behind Serialized accent content |
 
 ## Accent — Audit (product: SerializedAudit.io)
 
 | Name | Hex | Usage |
 |---|---|---|
-| Accent Audit | `#51DA4C` | Audit product accent — pass states, primary actions in the audit UI |
-| Accent Audit 16% | `#51DA4C` @ 16% opacity | Subtle fills, chart areas, hover backgrounds |
+| Accent Audit | `#3DCF8E` | Audit product accent — pass states, primary actions in the audit UI |
+| Accent Audit 16% | `#3DCF8E` @ 16% opacity | Subtle fills, chart areas, hover backgrounds |
 | Audit Background | `#1D282C` | Tinted surface behind Audit accent content |
 
 ## Semantic

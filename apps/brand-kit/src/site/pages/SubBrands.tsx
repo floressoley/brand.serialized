@@ -7,19 +7,16 @@ import auditMarkOnDarkRaw from '../../../brand-kit/logo/audit/audit-logomark-on-
 import auditMarkOnLight from '../../../brand-kit/logo/audit/audit-logomark-on-light.svg'
 import auditMarkOnLightRaw from '../../../brand-kit/logo/audit/audit-logomark-on-light.svg?raw'
 import { AssetActions } from '../AssetActions'
-import { SectionHero } from '../SectionHero'
 import './Logos.css'
 
 export function SubBrands() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
       <p className="content__eyebrow">Brand Kit · Sub Brands</p>
       <p className="content__lede">
         The product identity for SerializedAudit.io — a B2C token scanning and auditing tool. Same mark, same
-        type system, one signal difference: the third bar and wordmark shift to Accent Audit green, marking
+        type system, one signal difference: the mark and ".Audit" wordmark shift to Accent Audit green, marking
         it as a distinct product surface within the Serialized family.
       </p>
 
@@ -27,8 +24,8 @@ export function SubBrands() {
         <div className="logo-showcase__info">
           <h2>Full logo</h2>
           <p>
-            The Audit lockup pairs the same slash mark and Fraunces wordmark as the parent brand — only the
-            third bar and ".Audit" suffix shift to Accent Audit green, signaling the product surface.
+            The Audit lockup pairs the same slash mark and Fraunces wordmark as the parent brand — the mark and
+            ".Audit" suffix shift to Accent Audit green, signaling the product surface.
           </p>
         </div>
         <div className="logo-showcase__previews">
@@ -92,7 +89,7 @@ export function SubBrands() {
         <ul className="rule-list">
           <li>Audit lockups are used exclusively on SerializedAudit.io product surfaces — scanning UI, reports, product marketing for Audit specifically.</li>
           <li>Never substitute the Audit lockup for the parent Serialized mark, or vice versa — each signals a distinct context to the user.</li>
-          <li>Pair with Accent Audit (<code>#51DA4C</code>) throughout the surface — buttons, active states, pass indicators — not Accent Serialized blue. See <a href="/color" style={{ color: 'var(--color-accent-audit)' }}>Color</a> for the full lane.</li>
+          <li>Pair with Accent Audit (<code>#3DCF8E</code>) throughout the surface — buttons, active states, pass indicators — not Accent Serialized blue. See <a href="/color" style={{ color: 'var(--color-accent-audit)' }}>Color</a> for the full lane.</li>
           <li>Clearspace and minimum-size rules are identical to the parent mark — see <a href="/logos" style={{ color: 'var(--color-accent-audit)' }}>Logos</a>.</li>
         </ul>
       </div>

@@ -17,14 +17,11 @@ import faviconDisplay from '../../../brand-kit/guidelines/in-use/favicon-display
 import faviconSvg from '../../../brand-kit/logo/serialized/serialized-favicon.svg'
 import faviconSvgRaw from '../../../brand-kit/logo/serialized/serialized-favicon.svg?raw'
 import { AssetActions } from '../AssetActions'
-import { SectionHero } from '../SectionHero'
 import './Logos.css'
 
 export function Logos() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
       <p className="content__eyebrow">Brand Kit · Logos</p>
       <p className="content__lede">
@@ -247,10 +244,10 @@ export function Logos() {
           <div className="misuse-card">
             <div className="misuse-card__header">
               <span className="misuse-card__icon">✕</span>
-              <p className="misuse-card__caption">Place an <code>on-dark</code> variant on a light background, or vice versa.</p>
+              <p className="misuse-card__caption">Place an <code>on-dark</code> wordmark on a light background, or vice versa — the mark stays Accent Serialized either way, but the wordmark still needs the matching variant.</p>
             </div>
             <div className="misuse-card__stage misuse-card__stage--light">
-              <img src={markOnDark} alt="On-dark mark placed on a light background — nearly invisible" style={{ height: '80px', width: 'auto' }} />
+              <img src={wordmarkOnDark} alt="On-dark wordmark placed on a light background — nearly invisible" style={{ height: '40px', width: 'auto' }} />
               <span className="misuse-card__ghost-note">↑ barely there — same tone as the background</span>
             </div>
           </div>
@@ -285,16 +282,16 @@ export function Logos() {
           <div className="misuse-card">
             <div className="misuse-card__header">
               <span className="misuse-card__icon">✕</span>
-              <p className="misuse-card__caption">Use different colors for the mark and wordmark — they're always the same tone.</p>
+              <p className="misuse-card__caption">Use a mono (white or black) mark for the parent Serialized brand — the mark is always Accent Serialized.</p>
             </div>
             <div className="misuse-card__stage" style={{ gap: 'var(--space-2)' }}>
               <div
                 role="img"
-                aria-label="Logomark and wordmark in mismatched colors — incorrect"
+                aria-label="Mono logomark used for the Serialized parent brand — incorrect"
                 style={{
                   height: '34px',
                   width: '34px',
-                  background: 'var(--color-accent-serialized)',
+                  background: 'var(--color-text-primary)',
                   WebkitMaskImage: `url(${markOnDark})`,
                   maskImage: `url(${markOnDark})`,
                   WebkitMaskSize: 'contain',
