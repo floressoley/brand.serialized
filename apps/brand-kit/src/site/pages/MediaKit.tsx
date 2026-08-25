@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { AssetCarousel } from '../AssetCarousel'
-import { SectionHero } from '../SectionHero'
 import './MediaKit.css'
 
 function toCarouselItems(entries: [string, string][]) {
@@ -70,8 +69,6 @@ function CopyBlock({ label, text }: { label: string; text: string }) {
 export function MediaKit() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
         <p className="content__eyebrow">Brand Kit · Media Kit</p>
         <p className="content__lede">

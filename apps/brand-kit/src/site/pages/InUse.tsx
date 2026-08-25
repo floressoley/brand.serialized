@@ -1,6 +1,5 @@
 import auditLogoOnDark from '../../../brand-kit/logo/audit/audit-horizontal-on-dark.svg'
 import { Badge, Button, Card, Nav, ShinyButton, Table } from '@serialized/ui'
-import { SectionHero } from '../SectionHero'
 import './InUse.css'
 
 const auditRows = [
@@ -12,8 +11,6 @@ const auditRows = [
 export function InUse() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
       <p className="content__eyebrow">Brand Kit · In Use</p>
       <p className="content__lede">

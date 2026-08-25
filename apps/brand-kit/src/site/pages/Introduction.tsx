@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { SectionHero } from '../SectionHero'
 import '@serialized/ui/Button/Button.css'
 import './Introduction.css'
 
@@ -34,8 +33,6 @@ const MAP = [
 export function Introduction() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
         <p className="content__eyebrow">Brand Kit · Introduction</p>
         <p className="intro-statement">

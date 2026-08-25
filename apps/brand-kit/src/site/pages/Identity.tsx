@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
-import { HexHero, InteractiveGrid } from '@serialized/ui'
-import { SectionHero } from '../SectionHero'
+import { HexHero } from '@serialized/ui'
 import './Identity.css'
 
 const AUDIENCE = [
@@ -57,7 +56,7 @@ const PROMISES = [
 
 const VOICE_RULES = [
   'State findings and facts plainly — this is an audit tool, not a pitch.',
-  'Short Fraunces statements for emphasis; everything else in Satoshi, plain and clear.',
+  'Short statements for emphasis; everything runs in Satoshi, plain and clear.',
   'Never editorialize a risk score. Report the number and the reasoning, not a verdict dressed as opinion.',
 ]
 
@@ -87,8 +86,6 @@ function Row({ index, label, children }: RowProps) {
 export function Identity() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
         <p className="content__eyebrow">Brand Kit · Identity</p>
         <p className="content__lede">
@@ -206,12 +203,6 @@ export function Identity() {
                   <HexHero pace="calm" />
                 </div>
                 <div className="identity-imagery__caption">Hex/data dumps — tokens syntax-highlighted against muted mono text</div>
-              </div>
-              <div className="identity-imagery__card">
-                <div className="identity-imagery__effect">
-                  <InteractiveGrid dotDistance={14} lineLength={9} lineWidth={1} minProximity={90} />
-                </div>
-                <div className="identity-imagery__caption">Diagonal line-hatch — near-invisible directional background texture</div>
               </div>
             </div>
           </Row>

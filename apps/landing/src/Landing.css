@@ -83,12 +83,6 @@
   align-items: center;
 }
 
-.landing-hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
 .landing-hero__vignette {
   position: absolute;
   inset: 0;

@@ -13,7 +13,6 @@ import { Icons } from './site/pages/Icons'
 import { DesignSystem } from './site/pages/DesignSystem'
 import { SubBrands } from './site/pages/SubBrands'
 import { MediaKit } from './site/pages/MediaKit'
-import { FieldGenerator } from './site/pages/FieldGenerator'
 import { InUse } from './site/pages/InUse'
 
 createRoot(document.getElementById('root')!).render(
@@ -31,7 +30,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="design-system" element={<DesignSystem />} />
           <Route path="sub-brands" element={<SubBrands />} />
           <Route path="media-kit" element={<MediaKit />} />
-          <Route path="field-generator" element={<FieldGenerator />} />
           <Route path="in-use" element={<InUse />} />
         </Route>
       </Routes>

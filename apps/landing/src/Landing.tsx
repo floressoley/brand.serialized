@@ -1,18 +1,20 @@
 import horizontalOnDark from './assets/serialized-horizontal-on-dark.svg'
-import { HexHero, InteractiveGrid, ShinyButton } from '@serialized/ui'
+import { HexHero, ShinyButton } from '@serialized/ui'
 import './Landing.css'
 
 /**
  * Landing hero, v3 — centered composition (eyebrow/h1/lede/CTA stacked and
- * centered, like Gantry's hero). InteractiveGrid now runs full-bleed behind
- * the text as ambient background (a grid of dots that light up and connect
- * to the cursor, hue cycling with position). HexHero moved down to a strip
- * along the bottom edge of the hero instead of running as the background.
+ * centered, like Gantry's hero). HexHero runs as a strip along the bottom
+ * edge of the hero.
  *
- * MagnetLines and AsciiTrail are intentionally not used here anymore — kept
- * as components for reuse elsewhere, not deleted — since the split-layout
- * they were designed for no longer exists. The earlier SignalBars barcode
- * strip was removed outright (not kept for reuse).
+ * The InteractiveGrid cursor-field background that used to run behind the
+ * hero text was removed — this design no longer uses it. It (along with
+ * MagnetLines and the Field Generator tool) was extracted out of the repo
+ * rather than deleted, for reuse in another project. AsciiTrail is
+ * intentionally not used here anymore either — kept as a component for
+ * reuse elsewhere, not deleted — since the split-layout it was designed for
+ * no longer exists. The earlier SignalBars barcode strip was removed
+ * outright (not kept for reuse).
  */
 
 function SocialIcon({ label, path }: { label: string; path: string }) {
@@ -47,9 +49,6 @@ export function Landing() {
       </header>
 
       <section className="landing-hero">
-        <div className="landing-hero__bg">
-          <InteractiveGrid />
-        </div>
         <div className="landing-hero__vignette" />
 
         <div className="landing-hero__content">

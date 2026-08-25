@@ -1,3 +1,17 @@
+/* Brand-kit site copy no longer uses Fraunces — it's reserved for the logo lockups (baked into the
+   SVG assets, not rendered via CSS). Override the shared display-font token to fall back to Satoshi. */
+:root {
+  --font-display: var(--font-body);
+  --font-display-settings: normal;
+  --font-display-large-settings: normal;
+  --font-display-letter-spacing: var(--font-body-letter-spacing);
+}
+
+.text-display-large,
+.text-headline-large {
+  font-weight: 500;
+}
+
 .site {
   display: flex;
   min-height: 100vh;
@@ -217,40 +231,9 @@
 
 .content {
   position: relative;
-  /* A positioned element with z-index:auto does NOT create a new stacking
-     context, so .content-hero-bg's z-index:-1 was escaping to whatever
-     ancestor stacking context existed further up instead of staying
-     scoped here. isolation:isolate forces .content to own one. */
-  isolation: isolate;
   flex: 1;
   min-width: 0;
   padding: var(--space-16);
-}
-
-/*
- * Shared hero background, mounted once here instead of per-page inside
- * SectionHero. Every page's hero band is the same fixed height/position
- * (see .section-hero in SectionHero.css) with an identical InteractiveGrid
- * texture, so re-mounting a fresh canvas + grid array + ResizeObserver on
- * every route change was pure waste — it was the main contributor to the
- * navigation lag between sections. SectionHero still renders per page (for
- * spacing and the optional eyebrow) but is now just a transparent overlay
- * on top of this persistent canvas.
- */
-.content-hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 42vh;
-  min-height: 320px;
-  overflow: hidden;
-  /* -1, not 0 — a positioned z-index:0 sibling paints ABOVE .content__inner's
-     in-flow content per CSS stacking order, which would cover every page's
-     text. -1 keeps it behind while staying inside .content's own stacking
-     context (it's positioned, so z-index:-1 won't escape behind .site). */
-  z-index: -1;
-  pointer-events: none;
 }
 
 .page-body {
@@ -285,6 +268,7 @@
 .content__title {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-large-settings);
+  font-weight: 500;
   letter-spacing: var(--text-headline-large-tracking);
   font-size: var(--text-headline-large-size);
   line-height: var(--text-headline-large-line-height);
@@ -314,6 +298,7 @@
 .section h2 {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
+  font-weight: 500;
   letter-spacing: var(--font-display-letter-spacing);
   font-size: 32px;
   line-height: 1.2;

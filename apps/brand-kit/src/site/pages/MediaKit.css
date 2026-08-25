@@ -10,6 +10,7 @@
 .media-kit__subhead {
   font-family: var(--font-display);
   font-variation-settings: var(--font-display-settings);
+  font-weight: 500;
   letter-spacing: var(--font-display-letter-spacing);
   font-size: 20px;
   line-height: 1.2;

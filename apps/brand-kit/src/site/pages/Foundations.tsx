@@ -1,4 +1,3 @@
-import { SectionHero } from '../SectionHero'
 import './Foundations.css'
 
 const ELEVATION = [
@@ -25,8 +24,6 @@ const RHYTHM = [
 export function Foundations() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
         <p className="content__eyebrow">Brand Kit · Foundations</p>
         <p className="content__lede">
@@ -126,7 +123,7 @@ export function Foundations() {
             </div>
             <div className="texture-swatch texture-swatch--hex">
               <pre className="texture-swatch__hex">
-                {'0x7EABF5  0x2C2C2A  0x1A1A19\n0x0F0F0F  '}
+                {'0x3D74FF  0x2C2C2A  0x1A1A19\n0x0F0F0F  '}
                 <span>0xF2F2F0</span>
                 {'  0x9C9C99\n0x6B6B68  0x2A2A28  0x3A3938'}
               </pre>

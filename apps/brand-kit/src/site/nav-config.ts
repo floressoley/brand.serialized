@@ -114,5 +114,4 @@ export const NAV_SECTIONS: NavSection[] = [
     ],
   },
   { path: '/media-kit', label: 'Media Kit', group: 'Media Kit' },
-  { path: '/field-generator', label: 'Field Generator', group: 'Media Kit' },
 ]

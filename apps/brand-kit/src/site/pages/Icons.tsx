@@ -28,7 +28,6 @@ import {
   XCircle,
 } from '@phosphor-icons/react'
 import type { Icon as IconType } from '@phosphor-icons/react'
-import { SectionHero } from '../SectionHero'
 import './Icons.css'
 
 const ICONS: { name: string; Icon: IconType }[] = [
@@ -69,8 +68,6 @@ const USAGE_RULES = [
 export function Icons() {
   return (
     <div>
-      <SectionHero />
-
       <div className="page-body">
         <p className="content__eyebrow">Brand Kit · Icons</p>
         <p className="content__lede">
